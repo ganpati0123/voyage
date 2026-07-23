@@ -26,7 +26,7 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "node server.js"
+args = "cd voyage-react && npm run dev"
 waitForPort = 5000
 
 [[ports]]
