@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const navLinks = ['ABOUT', 'TRACKS', 'TIMELINE', 'PRIZES', 'SPONSORS', 'FAQ', 'CONTACT'];
+const navLinks = ['ABOUT', 'TRACKS', 'TIMELINE', 'PRIZES', 'SPONSORS', 'FAQ', 'CONTACT', 'REGISTER'];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
           {/* CTA */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <button
-              onClick={() => scrollTo('ABOUT')}
+              onClick={() => scrollTo('register')}
               style={{
                 background: 'var(--gold)',
                 border: 'none',

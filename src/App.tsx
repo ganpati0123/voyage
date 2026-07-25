@@ -8,6 +8,9 @@ import Rounds from './components/Rounds';
 import Prizes from './components/Prizes';
 import Sponsors from './components/Sponsors';
 import FAQ from './components/FAQ';
+import Register from './components/Register';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
       <Prizes />
       <Sponsors />
       <FAQ />
+      <Register />
+      <Contact />
+      <Footer />
     </div>
   );
 }
