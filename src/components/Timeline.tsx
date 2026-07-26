@@ -20,13 +20,13 @@ const schedule = [
 ];
 
 const phaseColors: Record<string, string> = {
-  start: 'var(--gold)',
-  build: 'var(--teal)',
-  break: 'rgba(141,165,196,0.7)',
-  fun: 'rgba(220,100,140,0.8)',
-  mentor: 'rgba(60,140,220,0.8)',
-  judge: 'var(--gold)',
-  end: 'var(--gold)',
+  start: '#d4af37',
+  build: '#2db8a6',
+  break: '#8da5c4',
+  fun: '#dc648c',
+  mentor: '#4a90d9',
+  judge: '#d4af37',
+  end: '#d4af37',
 };
 
 const Timeline: React.FC = () => {
@@ -36,45 +36,46 @@ const Timeline: React.FC = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="timeline" ref={sectionRef} style={{
-      background: 'var(--bg-dark)',
-      padding: '100px 48px',
+    <section id="timeline" ref={sectionRef} className="noise-texture" style={{
+      background: 'linear-gradient(180deg, #030712 0%, #060d1c 100%)',
+      padding: '120px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
-      }} />
+      <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative' }}>
-        <div style={{ marginBottom: 56, textAlign: 'center' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ marginBottom: 64, textAlign: 'center' }}>
           <span className="section-label">CAPTAIN'S LOG</span>
-          <h2 className="pixel-heading" style={{
-            fontSize: 'clamp(20px, 2.8vw, 36px)',
+          <h2 style={{
+            fontFamily: "'Pirata One', serif",
+            fontSize: 'clamp(36px, 5vw, 64px)',
             color: 'var(--text-white)',
-            lineHeight: 1.4,
-            marginTop: 8,
+            lineHeight: 1,
+            marginTop: 16,
             animation: visible ? 'fadeInUp 0.8s ease' : 'none',
           }}>
-            The 36-Hour <span style={{ color: 'var(--gold)' }}>Journey</span>
+            The 36-Hour <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Journey</span>
           </h2>
+          <div className="ornament">
+            <div className="ornament-line" />
+            <div className="ornament-dot" />
+            <div className="ornament-line" />
+          </div>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 14,
             color: 'rgba(255,255,255,0.5)',
-            marginTop: 16,
             maxWidth: 500,
-            margin: '16px auto 0',
-            lineHeight: 1.7,
+            margin: '0 auto',
+            lineHeight: 1.8,
           }}>
             From orientation to closing ceremony — here's how your 36 hours will unfold.
           </p>
@@ -87,7 +88,7 @@ const Timeline: React.FC = () => {
             position: 'absolute',
             left: '50%', top: 0, bottom: 0,
             width: 2,
-            background: 'linear-gradient(180deg, transparent, rgba(201,168,76,0.3) 10%, rgba(201,168,76,0.3) 90%, transparent)',
+            background: 'linear-gradient(180deg, transparent, rgba(212,175,55,0.4) 8%, rgba(212,175,55,0.4) 92%, transparent)',
             transform: 'translateX(-50%)',
           }} />
 
@@ -98,46 +99,49 @@ const Timeline: React.FC = () => {
                 position: 'relative',
                 display: 'flex',
                 justifyContent: isLeft ? 'flex-end' : 'flex-start',
-                marginBottom: 24,
-                paddingRight: isLeft ? 'calc(50% + 32px)' : 0,
-                paddingLeft: isLeft ? 0 : 'calc(50% + 32px)',
+                marginBottom: 28,
+                paddingRight: isLeft ? 'calc(50% + 40px)' : 0,
+                paddingLeft: isLeft ? 0 : 'calc(50% + 40px)',
                 animation: visible ? `fadeInUp 0.6s ease ${i * 60}ms both` : 'none',
               }}>
                 {/* Node */}
                 <div style={{
                   position: 'absolute',
                   left: '50%', top: 14,
-                  width: 14, height: 14,
+                  width: 16, height: 16,
                   borderRadius: '50%',
                   background: phaseColors[item.phase],
-                  border: '2px solid var(--bg-dark)',
+                  border: '3px solid #030712',
                   transform: 'translateX(-50%)',
-                  boxShadow: `0 0 12px ${phaseColors[item.phase]}`,
+                  boxShadow: `0 0 16px ${phaseColors[item.phase]}`,
                   zIndex: 2,
+                  animation: visible ? `glow-pulse 2s ease ${i * 60}ms infinite` : 'none',
                 }} />
 
-                <div style={{
-                  background: 'rgba(12,29,56,0.9)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '12px',
-                  padding: '18px 22px',
-                  width: '100%',
-                  transition: 'all 0.3s ease',
-                  cursor: 'default',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)';
-                  e.currentTarget.style.background = 'rgba(16,37,68,0.95)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                  e.currentTarget.style.background = 'rgba(12,29,56,0.9)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: '20px 24px',
+                    width: '100%',
+                    transition: 'all 0.3s ease',
+                    cursor: 'default',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px ${phaseColors[item.phase]}40`;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-                    <span style={{ color: phaseColors[item.phase] }}>{item.icon}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                    <span style={{
+                      width: 32, height: 32, borderRadius: 8,
+                      background: `${phaseColors[item.phase]}20`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: phaseColors[item.phase],
+                    }}>{item.icon}</span>
                     <span style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '9px', color: 'rgba(255,255,255,0.4)',
@@ -145,8 +149,8 @@ const Timeline: React.FC = () => {
                     }}>{item.time}</span>
                   </div>
                   <p style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '14px', color: 'rgba(255,255,255,0.85)',
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: '15px', color: 'rgba(255,255,255,0.9)',
                     fontWeight: 500, lineHeight: 1.4,
                   }}>{item.title}</p>
                 </div>
@@ -163,7 +167,7 @@ const Timeline: React.FC = () => {
           #timeline > div:last-child > div[style*="justify-content"] {
             justify-content: flex-start !important;
             padding-right: 0 !important;
-            padding-left: 40px !important;
+            padding-left: 44px !important;
           }
         }
       `}</style>

@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px 24px',
-        transition: 'all 0.3s ease',
+        transition: 'all 0.4s ease',
       }}>
         <div style={{
           display: 'flex',
@@ -37,34 +37,66 @@ const Navbar: React.FC = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1140px',
-          background: scrolled ? 'rgba(6,18,38,0.95)' : 'rgba(6,18,38,0.75)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(201,168,76,0.22)',
-          borderRadius: '12px',
-          padding: '12px 28px',
-          boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.5)' : 'none',
-          transition: 'all 0.3s ease',
+          background: scrolled ? 'rgba(3,7,18,0.92)' : 'rgba(3,7,18,0.6)',
+          backdropFilter: 'blur(24px)',
+          border: `1px solid ${scrolled ? 'rgba(212,175,55,0.35)' : 'rgba(212,175,55,0.15)'}`,
+          borderRadius: '14px',
+          padding: '14px 32px',
+          boxShadow: scrolled ? '0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.1)' : '0 4px 20px rgba(0,0,0,0.3)',
+          transition: 'all 0.4s ease',
+          position: 'relative',
         }}>
+          {/* Corner ornaments */}
+          {['', ''].map((_, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              [i === 0 ? 'top' : 'bottom']: -1,
+              [i === 0 ? 'left' : 'right']: -1,
+              width: 12, height: 12,
+              borderTop: i === 0 ? '2px solid var(--gold)' : 'none',
+              borderBottom: i === 1 ? '2px solid var(--gold)' : 'none',
+              borderLeft: i === 0 ? '2px solid var(--gold)' : 'none',
+              borderRight: i === 1 ? '2px solid var(--gold)' : 'none',
+              borderRadius: 2,
+            } as React.CSSProperties} />
+          ))}
+
           {/* Logo */}
           <div
             style={{
-              fontFamily: 'var(--font-pixel)',
-              fontSize: '13px',
-              color: 'var(--text-white)',
-              letterSpacing: '2px',
-              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: 10,
+              gap: 12,
+              cursor: 'pointer',
             }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span style={{ color: 'var(--gold)' }}>VOYAGE</span>
-            <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>2026</span>
+            {/* Anchor icon */}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="5" r="3" />
+              <line x1="12" y1="22" x2="12" y2="8" />
+              <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+            </svg>
+            <span style={{
+              fontFamily: "'Pirata One', serif",
+              fontSize: '22px',
+              color: 'var(--gold)',
+              letterSpacing: '0.05em',
+              textShadow: '0 0 20px rgba(212,175,55,0.4)',
+            }}>Voyage</span>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '9px',
+              color: 'rgba(255,255,255,0.4)',
+              letterSpacing: '0.15em',
+              border: '1px solid rgba(212,175,55,0.3)',
+              borderRadius: 4,
+              padding: '2px 6px',
+            }}>2026</span>
           </div>
 
           {/* Desktop nav */}
-          <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }} className="desktop-nav">
+          <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
             {navLinks.map(link => (
               <button
                 key={link}
@@ -73,15 +105,23 @@ const Navbar: React.FC = () => {
                   background: 'none',
                   border: 'none',
                   color: 'rgba(255,255,255,0.6)',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10px',
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: '12px',
                   letterSpacing: '0.15em',
+                  fontWeight: 500,
                   cursor: 'pointer',
-                  transition: 'color 0.2s',
+                  transition: 'all 0.2s',
                   padding: '4px 0',
+                  position: 'relative',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--gold)';
+                  e.currentTarget.style.textShadow = '0 0 10px rgba(212,175,55,0.5)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'rgba(255,255,255,0.6)';
+                  e.currentTarget.style.textShadow = 'none';
+                }}
               >
                 {link}
               </button>
@@ -93,26 +133,27 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => scrollTo('register')}
               style={{
-                background: 'var(--gold)',
+                background: 'linear-gradient(135deg, #d4af37, #8a6f30)',
                 border: 'none',
                 color: '#000',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
+                fontFamily: "'Cinzel', serif",
+                fontSize: '12px',
                 letterSpacing: '0.1em',
                 fontWeight: 700,
-                padding: '10px 20px',
-                borderRadius: '8px',
+                padding: '11px 22px',
+                borderRadius: 8,
                 cursor: 'pointer',
-                transition: 'all 0.2s',
+                transition: 'all 0.3s ease',
                 whiteSpace: 'nowrap',
+                boxShadow: '0 4px 16px rgba(212,175,55,0.3)',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'var(--gold-light)';
-                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.transform = 'translateY(-2px) scale(1.03)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(212,175,55,0.5)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.background = 'var(--gold)';
-                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(212,175,55,0.3)';
               }}
             >
               SET SAIL →
@@ -122,7 +163,7 @@ const Navbar: React.FC = () => {
               style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'none' }}
               className="mobile-menu-btn"
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -134,11 +175,12 @@ const Navbar: React.FC = () => {
           position: 'fixed',
           top: '80px', left: '16px', right: '16px',
           zIndex: 999,
-          background: 'rgba(6,18,38,0.98)',
-          border: '1px solid rgba(201,168,76,0.22)',
-          borderRadius: '12px',
-          padding: '20px',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(3,7,18,0.98)',
+          border: '1px solid rgba(212,175,55,0.25)',
+          borderRadius: '14px',
+          padding: '24px',
+          backdropFilter: 'blur(24px)',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
         }}>
           {navLinks.map(link => (
             <button
@@ -151,13 +193,16 @@ const Navbar: React.FC = () => {
                 border: 'none',
                 borderBottom: '1px solid rgba(255,255,255,0.05)',
                 color: 'rgba(255,255,255,0.7)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
+                fontFamily: "'Cinzel', serif",
+                fontSize: '13px',
                 letterSpacing: '0.15em',
-                padding: '14px 0',
+                padding: '16px 0',
                 textAlign: 'left',
                 cursor: 'pointer',
+                transition: 'color 0.2s',
               }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
             >
               {link}
             </button>

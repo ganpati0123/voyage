@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const contacts = [
-  { name: 'Ganpati Raj', phone: '+91 9507542854', email: '', role: 'Organizing Team' },
-  { name: 'Krishna Raj Barnwal', phone: '+91 7320000215', email: '', role: 'Organizing Team' },
-  { name: 'Ritusree Chanda', phone: '+91 7362994375', email: '', role: 'Organizing Team' },
-  { name: 'Aditya Gaurav', phone: '+91 70291 62093', email: '', role: 'Organizing Team' },
-  { name: 'Neeraj Sahu', phone: '+91 9336345475', email: '', role: 'Organizing Team' },
-  { name: 'Moumita Mandal', phone: '+91 9229726302', email: '', role: 'Organizing Team' },
-  { name: 'Omkar Kumar', phone: '+91 9631922222', email: '', role: 'Organizing Team' },
-  { name: 'Mayank Raj', phone: '+91 8969212216', email: '', role: 'Organizing Team' },
+  { name: 'Ganpati Raj', phone: '+91 9507542854', role: 'Organizing Team' },
+  { name: 'Krishna Raj Barnwal', phone: '+91 7320000215', role: 'Organizing Team' },
+  { name: 'Ritusree Chanda', phone: '+91 7362994375', role: 'Organizing Team' },
+  { name: 'Aditya Gaurav', phone: '+91 70291 62093', role: 'Organizing Team' },
+  { name: 'Neeraj Sahu', phone: '+91 9336345475', role: 'Organizing Team' },
+  { name: 'Moumita Mandal', phone: '+91 9229726302', role: 'Organizing Team' },
+  { name: 'Omkar Kumar', phone: '+91 9631922222', role: 'Organizing Team' },
+  { name: 'Mayank Raj', phone: '+91 8969212216', role: 'Organizing Team' },
 ];
 
 const PhoneIcon = () => (
@@ -24,13 +24,12 @@ const ContactCard: React.FC<{ c: typeof contacts[0]; delay: number; visible: boo
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="glass-card"
       style={{
-        background: hovered ? 'rgba(16,37,68,0.95)' : 'rgba(12,29,56,0.85)',
-        border: `1px solid ${hovered ? 'rgba(201,168,76,0.3)' : 'rgba(255,255,255,0.07)'}`,
-        borderRadius: 14,
-        padding: '24px 22px',
-        transition: 'all 0.3s ease',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        padding: '28px 24px',
+        transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+        transform: hovered ? 'translateY(-6px) scale(1.02)' : 'translateY(0)',
+        boxShadow: hovered ? '0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,175,55,0.2)' : 'none',
         animation: visible ? `fadeInUp 0.6s ease ${delay}ms both` : 'none',
       }}
     >
@@ -38,25 +37,25 @@ const ContactCard: React.FC<{ c: typeof contacts[0]; delay: number; visible: boo
         fontFamily: 'var(--font-mono)',
         fontSize: '8px', letterSpacing: '0.18em',
         color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase',
-        marginBottom: 12, display: 'block',
+        marginBottom: 14, display: 'block',
       }}>{c.role}</span>
 
       <h3 style={{
-        fontFamily: 'var(--font-pixel)',
-        fontSize: '11px', color: 'var(--text-white)',
-        marginBottom: 16, lineHeight: 1.5,
+        fontFamily: "'Pirata One', serif",
+        fontSize: '20px', color: 'var(--text-white)',
+        marginBottom: 18, lineHeight: 1.2,
       }}>{c.name}</h3>
 
       <a href={`tel:${c.phone.replace(/[-\s]/g, '')}`} style={{
-        display: 'flex', alignItems: 'center', gap: 10,
-        fontFamily: 'var(--font-sans)', fontSize: '13px',
+        display: 'flex', alignItems: 'center', gap: 12,
+        fontFamily: 'var(--font-sans)', fontSize: '14px',
         color: hovered ? 'var(--text-white)' : 'rgba(255,255,255,0.6)',
         textDecoration: 'none', transition: 'color 0.2s',
       }}>
         <span style={{
-          width: 30, height: 30, borderRadius: 8,
-          background: 'rgba(255,255,255,0.04)',
-          border: `1px solid ${hovered ? 'rgba(201,168,76,0.3)' : 'rgba(255,255,255,0.08)'}`,
+          width: 34, height: 34, borderRadius: 10,
+          background: hovered ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.04)',
+          border: `1px solid ${hovered ? 'rgba(212,175,55,0.3)' : 'rgba(255,255,255,0.08)'}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           color: hovered ? 'var(--gold)' : 'rgba(255,255,255,0.5)',
           flexShrink: 0, transition: 'all 0.25s',
@@ -81,35 +80,32 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <section id="contact" ref={sectionRef} style={{
-      background: 'var(--bg-dark)',
-      padding: '100px 48px',
+    <section id="contact" ref={sectionRef} className="noise-texture" style={{
+      background: 'linear-gradient(180deg, #060d1c 0%, #030712 100%)',
+      padding: '120px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
-      }} />
+      <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="section-label">CONTACTS</span>
-          <h2 className="pixel-heading" style={{
-            fontSize: 'clamp(20px, 2.8vw, 36px)',
-            marginTop: 12,
+          <h2 style={{
+            fontFamily: "'Pirata One', serif",
+            fontSize: 'clamp(40px, 5vw, 64px)',
+            marginTop: 16,
             color: 'var(--text-white)',
+            lineHeight: 1,
             animation: visible ? 'fadeInUp 0.8s ease' : 'none',
           }}>
-            Connect <span style={{ color: 'var(--gold)' }}>With Us</span>
+            Connect <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>With Us</span>
           </h2>
-          <div style={{
-            width: 56, height: 2,
-            background: 'var(--gold)',
-            margin: '20px auto 28px',
-            animation: visible ? 'fadeInUp 0.8s ease 0.1s both' : 'none',
-          }} />
+          <div className="ornament">
+            <div className="ornament-line" />
+            <div className="ornament-dot" />
+            <div className="ornament-line" />
+          </div>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 14, color: 'rgba(255,255,255,0.5)',

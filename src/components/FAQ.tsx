@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
@@ -51,32 +51,34 @@ const FAQ: React.FC = () => {
   }, []);
 
   return (
-    <section id="faq" ref={sectionRef} style={{
-      background: 'var(--bg-deep)',
-      padding: '100px 48px',
+    <section id="faq" ref={sectionRef} className="noise-texture" style={{
+      background: 'linear-gradient(180deg, #060d1c 0%, #030712 100%)',
+      padding: '120px 48px',
       position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
-      }} />
+      <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '820px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="section-label">QUESTIONS</span>
-          <h2 className="pixel-heading" style={{
-            fontSize: 'clamp(20px, 2.8vw, 36px)',
-            marginTop: 8,
+          <h2 style={{
+            fontFamily: "'Pirata One', serif",
+            fontSize: 'clamp(36px, 5vw, 64px)',
+            marginTop: 16,
             color: 'var(--text-white)',
-            lineHeight: 1.4,
+            lineHeight: 1,
             animation: visible ? 'fadeInUp 0.8s ease' : 'none',
           }}>
-            Frequently <span style={{ color: 'var(--gold)' }}>Asked</span>
+            Frequently <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Asked</span>
           </h2>
+          <div className="ornament">
+            <div className="ornament-line" />
+            <div className="ornament-dot" />
+            <div className="ornament-line" />
+          </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {faqs.map((faq, i) => (
             <FAQItem
               key={i}
@@ -106,12 +108,11 @@ const FAQItem: React.FC<{
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="glass-card"
       style={{
-        background: isOpen ? 'rgba(16,37,68,0.95)' : hovered ? 'rgba(14,32,60,0.9)' : 'rgba(12,29,56,0.8)',
-        border: `1px solid ${isOpen ? 'rgba(201,168,76,0.25)' : hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)'}`,
-        borderRadius: '14px',
         overflow: 'hidden',
-        transition: 'background 0.25s ease, border-color 0.25s ease',
+        transition: 'all 0.3s ease',
+        boxShadow: isOpen ? '0 12px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(212,175,55,0.2)' : 'none',
         animation: visible ? `fadeInUp 0.6s ease ${index * 70}ms both` : 'none',
       }}
     >
@@ -122,7 +123,7 @@ const FAQItem: React.FC<{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '22px 28px',
+          padding: '24px 30px',
           background: 'none',
           border: 'none',
           cursor: 'pointer',
@@ -131,38 +132,45 @@ const FAQItem: React.FC<{
         }}
       >
         <span style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '15px',
-          fontWeight: isOpen ? 500 : 400,
+          fontFamily: "'Cinzel', serif",
+          fontSize: '16px',
+          fontWeight: isOpen ? 600 : 500,
           color: isOpen ? 'var(--text-white)' : 'rgba(255,255,255,0.75)',
           lineHeight: 1.5,
           transition: 'color 0.2s',
         }}>{faq.q}</span>
         <span style={{
           flexShrink: 0,
-          color: isOpen ? 'var(--gold)' : 'rgba(255,255,255,0.35)',
-          transition: 'color 0.2s, transform 0.3s',
-          display: 'flex', alignItems: 'center',
+          width: 36, height: 36, borderRadius: '50%',
+          background: isOpen ? 'rgba(212,175,55,0.15)' : 'rgba(255,255,255,0.04)',
+          border: `1px solid ${isOpen ? 'rgba(212,175,55,0.3)' : 'rgba(255,255,255,0.08)'}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          color: isOpen ? 'var(--gold)' : 'rgba(255,255,255,0.4)',
+          transition: 'all 0.3s ease',
+          transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
         }}>
-          {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          <ChevronDown size={18} />
         </span>
       </button>
 
       <div style={{
-        maxHeight: isOpen ? '300px' : '0',
+        maxHeight: isOpen ? '400px' : '0',
         overflow: 'hidden',
-        transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
       }}>
         <div style={{
-          padding: '0 28px 24px',
-          borderTop: '1px solid rgba(255,255,255,0.05)',
-          paddingTop: 20,
+          padding: '0 30px 28px',
+          borderTop: '1px solid rgba(212,175,55,0.1)',
+          paddingTop: 22,
+          marginLeft: 30,
+          borderLeft: '2px solid rgba(212,175,55,0.2)',
+          paddingLeft: 24,
         }}>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: '13px',
+            fontSize: '14px',
             color: 'rgba(255,255,255,0.55)',
-            lineHeight: 1.8,
+            lineHeight: 1.9,
           }}>{faq.a}</p>
         </div>
       </div>
