@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const navLinks = ['ABOUT', 'TRACKS', 'TIMELINE', 'PRIZES', 'SPONSORS', 'FAQ', 'CONTACT', 'REGISTER'];
+const navLinks = ['ABOUT', 'TRACKS', 'TIMELINE', 'PRIZES', 'SPONSORS', 'FAQ', 'CONTACT'];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +23,7 @@ const Navbar: React.FC = () => {
     <>
       <nav style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 0, left: 0, right: 0,
         zIndex: 1000,
         display: 'flex',
         alignItems: 'center',
@@ -38,23 +36,35 @@ const Navbar: React.FC = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           width: '100%',
-          maxWidth: '1100px',
-          background: scrolled ? 'rgba(8,14,28,0.95)' : 'rgba(8,14,28,0.8)',
+          maxWidth: '1140px',
+          background: scrolled ? 'rgba(6,18,38,0.95)' : 'rgba(6,18,38,0.75)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(201,168,76,0.2)',
+          border: '1px solid rgba(201,168,76,0.22)',
           borderRadius: '12px',
           padding: '12px 28px',
           boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.5)' : 'none',
           transition: 'all 0.3s ease',
         }}>
           {/* Logo */}
-          <div style={{ fontFamily: 'var(--font-pixel)', fontSize: '14px', color: 'var(--text-white)', letterSpacing: '2px', cursor: 'pointer' }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            HackVerse <span style={{ color: 'var(--gold)' }}>2.0</span>
+          <div
+            style={{
+              fontFamily: 'var(--font-pixel)',
+              fontSize: '13px',
+              color: 'var(--text-white)',
+              letterSpacing: '2px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+            }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <span style={{ color: 'var(--gold)' }}>VOYAGE</span>
+            <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>2026</span>
           </div>
 
           {/* Desktop nav */}
-          <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
+          <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }} className="desktop-nav">
             {navLinks.map(link => (
               <button
                 key={link}
@@ -70,7 +80,7 @@ const Navbar: React.FC = () => {
                   transition: 'color 0.2s',
                   padding: '4px 0',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
               >
                 {link}
@@ -105,7 +115,7 @@ const Navbar: React.FC = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              REGISTER NOW →
+              SET SAIL →
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -122,12 +132,10 @@ const Navbar: React.FC = () => {
       {menuOpen && (
         <div style={{
           position: 'fixed',
-          top: '80px',
-          left: '16px',
-          right: '16px',
+          top: '80px', left: '16px', right: '16px',
           zIndex: 999,
-          background: 'rgba(8,14,28,0.98)',
-          border: '1px solid rgba(201,168,76,0.2)',
+          background: 'rgba(6,18,38,0.98)',
+          border: '1px solid rgba(201,168,76,0.22)',
           borderRadius: '12px',
           padding: '20px',
           backdropFilter: 'blur(20px)',
@@ -158,7 +166,7 @@ const Navbar: React.FC = () => {
       )}
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
         }

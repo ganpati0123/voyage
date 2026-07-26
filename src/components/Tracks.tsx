@@ -1,39 +1,72 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Brain, Cloud, Code } from 'lucide-react';
+import { Brain, Shield, Anchor, Heart, Coins, Compass } from 'lucide-react';
 
 const tracks = [
   {
     id: 1,
     number: '01',
-    icon: <Brain size={28} />,
-    title: 'AI Application Track',
-    subtitle: 'Cognitive Intelligence',
-    description: 'Build next-gen enterprise AI agents. Leverage LLMs, RAG systems, and autonomous multi-agent architectures to solve real business problems.',
-    tags: ['LLMs', 'RAG', 'Agents', 'Fine-tuning'],
+    icon: <Brain size={26} />,
+    title: "Devil's Triangle",
+    subtitle: 'AI / Machine Learning',
+    description: 'Harness the power of AI and Machine Learning to conquer the unknown.',
+    tags: ['LLMs', 'RAG', 'Agents', 'ML'],
     color: 'rgba(201,168,76,0.12)',
     border: 'rgba(201,168,76,0.4)',
   },
   {
     id: 2,
     number: '02',
-    icon: <Cloud size={28} />,
-    title: 'Cloud Infrastructure Track',
-    subtitle: 'Scalable Systems',
-    description: 'Design and deploy resilient cloud-native systems. Master containerization, orchestration, serverless compute, and observability at enterprise scale.',
-    tags: ['Kubernetes', 'Serverless', 'Terraform', 'Edge'],
+    icon: <Anchor size={26} />,
+    title: 'Tortuga Market',
+    subtitle: 'Blockchain / Web3',
+    description: 'Navigate the future with Blockchain and decentralized technologies.',
+    tags: ['Smart Contracts', 'DeFi', 'dApps', 'Web3'],
     color: 'rgba(60,140,220,0.1)',
     border: 'rgba(60,140,220,0.4)',
   },
   {
     id: 3,
     number: '03',
-    icon: <Code size={28} />,
-    title: 'Full Stack Development Track',
-    subtitle: 'End-to-End Engineering',
-    description: 'Craft production-grade applications. From modern frontend frameworks to distributed backends and robust APIs, build software that scales.',
-    tags: ['React', 'Node', 'PostgreSQL', 'GraphQL'],
+    icon: <Coins size={26} />,
+    title: "Dead Men's Ledger",
+    subtitle: 'FinTech',
+    description: 'Redefine the world of Financial Technology through secure, scalable innovation.',
+    tags: ['Payments', 'Banking', 'Fraud', 'Trading'],
     color: 'rgba(80,200,140,0.1)',
     border: 'rgba(80,200,140,0.4)',
+  },
+  {
+    id: 4,
+    number: '04',
+    icon: <Heart size={26} />,
+    title: 'Fountain of Youth',
+    subtitle: 'Healthcare',
+    description: 'Leverage technology to build smarter, more accessible Healthcare solutions.',
+    tags: ['MedTech', 'Diagnostics', 'Telehealth', 'AI Health'],
+    color: 'rgba(220,100,140,0.1)',
+    border: 'rgba(220,100,140,0.4)',
+  },
+  {
+    id: 5,
+    number: '05',
+    icon: <Shield size={26} />,
+    title: "Davy Jones' Vault",
+    subtitle: 'Cybersecurity',
+    description: 'Build innovative solutions to secure the digital world against evolving cyber threats.',
+    tags: ['AppSec', 'Crypto', 'Network', 'Forensics'],
+    color: 'rgba(160,100,220,0.1)',
+    border: 'rgba(160,100,220,0.4)',
+  },
+  {
+    id: 6,
+    number: '06',
+    icon: <Compass size={26} />,
+    title: 'Shipwreck Cove',
+    subtitle: 'Open Innovation',
+    description: 'Explore limitless possibilities and bring bold ideas to life across any domain.',
+    tags: ['Any Domain', 'Creative', 'Bold Ideas'],
+    color: 'rgba(45,184,166,0.1)',
+    border: 'rgba(45,184,166,0.4)',
   },
 ];
 
@@ -52,27 +85,22 @@ const Tracks: React.FC = () => {
 
   return (
     <section id="tracks" ref={sectionRef} style={{
-      background: 'var(--bg-dark)',
+      background: 'var(--bg-deep)',
       padding: '100px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Decorative side accent */}
       <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: 300,
-        height: 300,
-        background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)',
+        position: 'absolute', top: 0, left: 0, width: 400, height: 400,
+        background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
         <div style={{ marginBottom: 56, textAlign: 'center' }}>
-          <span className="section-label">EXPLORE TRACKS</span>
+          <span className="section-label">VOYAGE ARENA</span>
           <h2 className="pixel-heading" style={{
-            fontSize: 'clamp(22px, 3vw, 38px)',
+            fontSize: 'clamp(20px, 2.8vw, 36px)',
             color: 'var(--text-white)',
             lineHeight: 1.4,
             marginTop: 8,
@@ -85,10 +113,11 @@ const Tracks: React.FC = () => {
             fontSize: 14,
             color: 'rgba(255,255,255,0.5)',
             marginTop: 16,
-            maxWidth: 500,
+            maxWidth: 540,
             margin: '16px auto 0',
+            lineHeight: 1.7,
           }}>
-            Three specialized tracks designed to challenge and inspire. Pick the one that aligns with your expertise.
+            Six treasure-hunt themed tracks designed to challenge and inspire. Pick the one that aligns with your expertise and set sail.
           </p>
         </div>
 
@@ -102,6 +131,15 @@ const Tracks: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          #tracks > div:last-child > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 600px) {
+          #tracks > div:last-child > div:last-child { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 };
@@ -115,95 +153,65 @@ const TrackCard: React.FC<{ track: typeof tracks[0]; index: number; visible: boo
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'relative',
-        background: hovered ? 'rgba(20,32,52,0.95)' : 'rgba(13,21,37,0.9)',
+        background: hovered ? 'rgba(16,37,68,0.95)' : 'rgba(12,29,56,0.9)',
         border: `1px solid ${hovered ? track.border : 'rgba(255,255,255,0.07)'}`,
         borderRadius: '18px',
-        padding: '36px 28px',
+        padding: '32px 26px',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
         boxShadow: hovered ? `0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px ${track.border}` : 'none',
-        animation: visible ? `fadeInUp 0.7s ease ${index * 150}ms both` : 'none',
+        animation: visible ? `fadeInUp 0.7s ease ${index * 100}ms both` : 'none',
         cursor: 'default',
         overflow: 'hidden',
       }}
     >
-      {/* Number watermark */}
       <div style={{
-        position: 'absolute',
-        top: 16,
-        right: 24,
+        position: 'absolute', top: 16, right: 24,
         fontFamily: 'var(--font-pixel)',
-        fontSize: '48px',
+        fontSize: '42px',
         color: 'rgba(255,255,255,0.03)',
-        lineHeight: 1,
-        pointerEvents: 'none',
-      }}>
-        {track.number}
-      </div>
+        lineHeight: 1, pointerEvents: 'none',
+      }}>{track.number}</div>
 
-      {/* Icon */}
       <div style={{
-        width: 56,
-        height: 56,
-        borderRadius: '14px',
+        width: 52, height: 52, borderRadius: '12px',
         background: track.color,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: 'var(--gold)',
-        marginBottom: 24,
+        marginBottom: 22,
         transition: 'transform 0.3s ease',
         transform: hovered ? 'scale(1.1) rotate(-5deg)' : 'scale(1) rotate(0)',
-      }}>
-        {track.icon}
-      </div>
+      }}>{track.icon}</div>
 
       <div style={{
         fontFamily: 'var(--font-mono)',
-        fontSize: '9px',
-        color: 'var(--gold)',
-        letterSpacing: '0.2em',
-        textTransform: 'uppercase',
+        fontSize: '9px', color: 'var(--gold)',
+        letterSpacing: '0.2em', textTransform: 'uppercase',
         marginBottom: 8,
-      }}>
-        {track.subtitle}
-      </div>
+      }}>{track.subtitle}</div>
 
       <h3 style={{
-        fontFamily: 'var(--font-sans)',
-        fontSize: 19,
-        fontWeight: 600,
-        color: 'var(--text-white)',
-        marginBottom: 16,
-        lineHeight: 1.3,
-      }}>
-        {track.title}
-      </h3>
+        fontFamily: 'var(--font-pixel)',
+        fontSize: '13px', color: 'var(--text-white)',
+        marginBottom: 16, lineHeight: 1.5,
+      }}>{track.title}</h3>
 
       <p style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: 13,
-        color: 'rgba(255,255,255,0.55)',
-        lineHeight: 1.7,
-        marginBottom: 24,
-      }}>
-        {track.description}
-      </p>
+        fontSize: '13px', color: 'rgba(255,255,255,0.55)',
+        lineHeight: 1.7, marginBottom: 22,
+      }}>{track.description}</p>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {track.tags.map(tag => (
           <span key={tag} style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '9px',
-            color: 'rgba(255,255,255,0.6)',
+            fontSize: '9px', color: 'rgba(255,255,255,0.6)',
             background: 'rgba(255,255,255,0.05)',
             border: '1px solid rgba(255,255,255,0.08)',
-            padding: '5px 10px',
-            borderRadius: '6px',
+            padding: '5px 10px', borderRadius: '6px',
             letterSpacing: '0.05em',
-          }}>
-            {tag}
-          </span>
+          }}>{tag}</span>
         ))}
       </div>
     </div>

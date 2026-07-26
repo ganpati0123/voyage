@@ -24,35 +24,14 @@ const LinkedinIcon = () => (
 );
 
 const navItems = [
-  { label: 'About the Event', id: 'about' },
-  { label: 'Focus Areas & Tracks', id: 'tracks' },
-  { label: 'Schedule & Timeline', id: 'timeline' },
-  { label: 'Prizes & Tracks', id: 'prizes' },
-  { label: 'Inquiry & FAQs', id: 'faq' },
+  { label: 'About Voyage', id: 'about' },
+  { label: 'Voyage Arena', id: 'tracks' },
+  { label: "Captain's Log", id: 'timeline' },
+  { label: 'Treasure Cove', id: 'prizes' },
+  { label: 'Our Sponsors', id: 'sponsors' },
+  { label: 'Guidelines', id: 'guidelines' },
+  { label: 'FAQs', id: 'faq' },
 ];
-
-const FooterLink: React.FC<{ href?: string; onClick?: () => void; children: React.ReactNode }> = ({ href, onClick, children }) => {
-  const style: React.CSSProperties = {
-    display: 'flex', alignItems: 'center', gap: 8,
-    fontFamily: 'var(--font-sans)',
-    fontSize: 13,
-    color: 'var(--text-muted)',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    background: 'none',
-    border: 'none',
-    padding: 0,
-    textAlign: 'left' as const,
-    transition: 'color 0.2s',
-  };
-  const hover = (e: React.MouseEvent<HTMLElement>) => (e.currentTarget.style.color = 'var(--text-white)');
-  const leave = (e: React.MouseEvent<HTMLElement>) => (e.currentTarget.style.color = 'var(--text-muted)');
-
-  if (href) {
-    return <a href={href} style={style} target="_blank" rel="noreferrer" onMouseEnter={hover} onMouseLeave={leave}>{children}</a>;
-  }
-  return <button onClick={onClick} style={style} onMouseEnter={hover} onMouseLeave={leave}>{children}</button>;
-};
 
 const Footer: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -60,14 +39,17 @@ const Footer: React.FC = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const colTitle = (text: string) => (
-    <p className="pixel-heading" style={{
-      fontSize: 9, color: 'var(--gold)',
-      marginBottom: 24, letterSpacing: '0.1em',
-    }}>
-      {text}
-    </p>
-  );
+  const linkStyle: React.CSSProperties = {
+    display: 'flex', alignItems: 'center', gap: 8,
+    fontFamily: 'var(--font-sans)',
+    fontSize: 13,
+    color: 'rgba(255,255,255,0.5)',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    background: 'none', border: 'none', padding: 0,
+    textAlign: 'left' as const,
+    transition: 'color 0.2s',
+  };
 
   return (
     <footer style={{
@@ -82,31 +64,39 @@ const Footer: React.FC = () => {
         gridTemplateColumns: '2fr 1fr 1fr',
         gap: '48px 64px',
       }}>
-
         {/* Brand */}
         <div>
-          <p className="pixel-heading" style={{ fontSize: 14, color: 'var(--gold)', marginBottom: 18, letterSpacing: '0.08em' }}>
-            HACKVERSE 2.0
-          </p>
+          <p className="pixel-heading" style={{
+            fontSize: 14, color: 'var(--gold)',
+            marginBottom: 18, letterSpacing: '0.08em',
+          }}>VOYAGE 2026</p>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 13,
-            color: 'var(--text-muted)',
-            lineHeight: 1.8,
-            maxWidth: 320,
+            fontSize: 13, color: 'rgba(255,255,255,0.5)',
+            lineHeight: 1.8, maxWidth: 320, marginBottom: 16,
           }}>
-            Pan-India AI Hackathon hosted by Manipal Institute of Technology
-            Bengaluru in partnership with IBM and 1M1B.
+            A 36-hour national hackathon by GRID Community. Sail beyond limits, build beyond horizons.
           </p>
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10, color: 'rgba(255,255,255,0.3)',
+            letterSpacing: '0.1em',
+          }}>26 | 27 SEPTEMBER 2026</p>
         </div>
 
         {/* Navigation */}
         <div>
-          {colTitle('NAVIGATION')}
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 13 }}>
+          <p className="pixel-heading" style={{
+            fontSize: 9, color: 'var(--gold)',
+            marginBottom: 24, letterSpacing: '0.1em',
+          }}>NAVIGATION</p>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11 }}>
             {navItems.map(item => (
               <li key={item.id}>
-                <FooterLink onClick={() => scrollTo(item.id)}>{item.label}</FooterLink>
+                <button onClick={() => scrollTo(item.id)} style={linkStyle}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-white)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+                >{item.label}</button>
               </li>
             ))}
           </ul>
@@ -114,46 +104,51 @@ const Footer: React.FC = () => {
 
         {/* Contact */}
         <div>
-          {colTitle('CONTACT & HELP')}
+          <p className="pixel-heading" style={{
+            fontSize: 9, color: 'var(--gold)',
+            marginBottom: 24, letterSpacing: '0.1em',
+          }}>CONNECT</p>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 13 }}>
             <li>
-              <FooterLink href="mailto:hackversemitb@gmail.com">
-                <MailIcon /> hackversemitb@gmail.com
-              </FooterLink>
+              <a href="mailto:gridcommunity@example.com" target="_blank" rel="noreferrer" style={linkStyle}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-white)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+              ><MailIcon /> gridcommunity@example.com</a>
             </li>
             <li>
-              <FooterLink href="https://instagram.com">
-                <InstaIcon /> Instagram Page →
-              </FooterLink>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" style={linkStyle}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-white)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+              ><InstaIcon /> Instagram Page →</a>
             </li>
             <li>
-              <FooterLink href="https://linkedin.com">
-                <LinkedinIcon /> LinkedIn Profile →
-              </FooterLink>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" style={linkStyle}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-white)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+              ><LinkedinIcon /> LinkedIn Profile →</a>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {/* Bottom */}
       <div style={{
         borderTop: '1px solid rgba(255,255,255,0.05)',
         textAlign: 'center',
         padding: '20px 24px',
         fontFamily: 'var(--font-mono)',
-        fontSize: 11,
-        color: 'var(--text-dim)',
+        fontSize: 11, color: 'rgba(255,255,255,0.25)',
         letterSpacing: '0.08em',
       }}>
-        © 2026 Manipal Institute of Technology Bengaluru. All rights reserved.
+        © 2026 GRID Community. All rights reserved.
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
           footer > div:first-child { grid-template-columns: 1fr 1fr !important; }
           footer > div:first-child > div:first-child { grid-column: 1 / -1; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 500px) {
           footer > div:first-child { grid-template-columns: 1fr !important; padding: 40px 24px 32px !important; }
         }
       `}</style>

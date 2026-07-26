@@ -5,18 +5,24 @@
 }
 
 :root {
+  /* Voyage nautical treasure palette */
   --gold: #c9a84c;
   --gold-light: #e4c060;
   --gold-dim: #8a6f30;
-  --bg-deep: #060b12;
-  --bg-dark: #0a1020;
-  --bg-card: #0d1525;
-  --bg-card2: #111b2e;
-  --border: rgba(201, 168, 76, 0.15);
-  --border-card: rgba(255,255,255,0.07);
+  --ocean: #0a1f3c;
+  --ocean-deep: #061226;
+  --ocean-mid: #0d2543;
+  --bg-deep: #050d1a;
+  --bg-dark: #08152b;
+  --bg-card: #0c1d38;
+  --bg-card2: #102544;
+  --border: rgba(201, 168, 76, 0.18);
+  --border-card: rgba(255, 255, 255, 0.07);
   --text-white: #ffffff;
-  --text-muted: #8a9ab8;
-  --text-dim: #4a5568;
+  --text-muted: #8da5c4;
+  --text-dim: #4a6080;
+  --teal: #2db8a6;
+  --teal-dim: rgba(45, 184, 166, 0.15);
   --font-pixel: 'Press Start 2P', monospace;
   --font-mono: 'Space Mono', monospace;
   --font-sans: 'Inter', sans-serif;
@@ -38,7 +44,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--ocean-deep);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--gold-dim);
@@ -63,30 +69,20 @@ body {
   color: var(--gold);
 }
 
-/* Constellation canvas */
-#constellation-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
 /* Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
-  33% { transform: translateY(-20px) rotateX(15deg) rotateY(30deg); }
-  66% { transform: translateY(-10px) rotateX(-10deg) rotateY(-20deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
 }
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
-  50% { box-shadow: 0 0 40px rgba(201,168,76,0.6); }
-}
-
-@keyframes counter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  50% { box-shadow: 0 0 45px rgba(201,168,76,0.6); }
 }
 
 @keyframes fadeInUp {
@@ -104,41 +100,23 @@ body {
   to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes spin3d {
-  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg); }
-}
-
-@keyframes glitch {
-  0% { text-shadow: 2px 0 var(--gold), -2px 0 #0ff; }
-  20% { text-shadow: -2px 0 var(--gold), 2px 0 #0ff; }
-  40% { text-shadow: 2px 2px var(--gold), -2px -2px #0ff; }
-  60% { text-shadow: -2px 2px var(--gold), 2px -2px #0ff; }
-  80% { text-shadow: 2px 0 var(--gold), -2px 0 #0ff; }
-  100% { text-shadow: none; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-@keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes orbit {
-  0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
-}
-
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); }
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.6); }
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes wave {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.9); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+@keyframes compass-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

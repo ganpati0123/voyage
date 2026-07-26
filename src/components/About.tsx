@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Calendar, Users } from 'lucide-react';
+import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
 
 const useCountUp = (target: number, duration = 2000, start = false) => {
   const [value, setValue] = useState(0);
@@ -32,7 +32,8 @@ const About: React.FC = () => {
   }, []);
 
   const hours = useCountUp(36, 1800, visible);
-  const participants = useCountUp(300, 2000, visible);
+  const members = useCountUp(2000, 2200, visible);
+  const registrations = useCountUp(800, 2000, visible);
 
   return (
     <section id="about" ref={sectionRef} style={{
@@ -41,58 +42,63 @@ const About: React.FC = () => {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Background grid */}
       <div style={{
-        position: 'absolute',
-        inset: 0,
+        position: 'absolute', inset: 0, pointerEvents: 'none',
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)',
         backgroundSize: '60px 60px',
-        pointerEvents: 'none',
       }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 12 }}>
-          <span className="section-label">ABOUT HACKVERSE 2.0</span>
+          <span className="section-label">ABOUT VOYAGE</span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'start' }}>
           {/* Left */}
           <div>
             <h2 className="pixel-heading" style={{
-              fontSize: 'clamp(24px, 3.5vw, 44px)',
+              fontSize: 'clamp(22px, 3.2vw, 40px)',
               color: 'var(--text-white)',
               lineHeight: 1.4,
               marginBottom: 32,
               animation: visible ? 'slideInLeft 0.8s ease forwards' : 'none',
             }}>
-              Building the<br />
-              <span style={{ color: 'var(--gold)' }}>Future of</span><br />
-              Enterprise AI
+              Beyond the<br />
+              <span style={{ color: 'var(--gold)' }}>Horizon</span>
             </h2>
 
             <p style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '16px',
+              fontSize: '15px',
               color: 'rgba(255,255,255,0.8)',
               lineHeight: 1.8,
               marginBottom: 20,
             }}>
-              HackVerse 2.0 is MIT Bengaluru's flagship AI hackathon, organised in collaboration with IBM and 1M1B.
+              Voyage – Beyond the Horizon is a premier 36-hour innovation challenge that brings together students, developers, designers, and innovators to solve real-world problems through technology.
             </p>
 
             <p style={{
               fontFamily: 'var(--font-sans)',
               fontSize: '13px',
-              color: 'rgba(255,255,255,0.45)',
+              color: 'rgba(255,255,255,0.5)',
+              lineHeight: 1.8,
+              marginBottom: 20,
+            }}>
+              Over 36 hours of continuous brainstorming, collaboration, and technical creativity, participants will transform ideas into impactful solutions while pushing the boundaries of innovation.
+            </p>
+
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '13px',
+              color: 'rgba(255,255,255,0.5)',
               lineHeight: 1.8,
               marginBottom: 32,
             }}>
-              Over 36 hours, participants design, build and deploy production-ready AI systems solving real enterprise challenges using modern cloud infrastructure, AI models, and collaborative development tools.
+              Whether you're passionate about AI, Blockchain, FinTech, Healthcare, or Open Innovation, Voyage provides the perfect environment to learn, experiment, and grow. Collaborate with like-minded innovators, receive mentorship from industry experts, and gain hands-on experience building solutions under pressure.
             </p>
 
             <div style={{
-              width: 80,
-              height: 2,
+              width: 80, height: 2,
               background: 'linear-gradient(90deg, var(--gold), transparent)',
               borderRadius: 2,
             }} />
@@ -101,20 +107,10 @@ const About: React.FC = () => {
           {/* Right — stat cards */}
           <div style={{ display: 'flex', gap: 20, flexDirection: 'column' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-              <StatCard
-                icon={<Calendar size={22} color="var(--gold)" />}
-                value={`${hours} Hrs`}
-                label="Build Duration"
-                visible={visible}
-                delay={0}
-              />
-              <StatCard
-                icon={<Users size={22} color="var(--gold)" />}
-                value={`${participants}+`}
-                label="Participants"
-                visible={visible}
-                delay={200}
-              />
+              <StatCard icon={<Calendar size={22} color="var(--gold)" />} value={`${hours} Hrs`} label="Build Duration" visible={visible} delay={0} />
+              <StatCard icon={<Users size={22} color="var(--gold)" />} value={`${members}+`} label="GRID Members" visible={visible} delay={200} />
+              <StatCard icon={<Trophy size={22} color="var(--gold)" />} value="₹25K" label="Prize Pool" visible={visible} delay={400} />
+              <StatCard icon={<MapPin size={22} color="var(--gold)" />} value="TBD" label="Hosted At" visible={visible} delay={600} />
             </div>
           </div>
         </div>
@@ -127,18 +123,24 @@ const About: React.FC = () => {
         }}>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 'clamp(18px, 2.5vw, 28px)',
+            fontSize: 'clamp(18px, 2.5vw, 26px)',
             color: 'rgba(255,255,255,0.9)',
             lineHeight: 1.6,
             maxWidth: 800,
             margin: '0 auto',
           }}>
-            Building{' '}
-            <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>enterprise-grade AI solutions</span>
-            {' '}that create measurable real-world impact.
+            <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>EXPLORE.</span>{' '}
+            <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>INNOVATE.</span>{' '}
+            <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>TRANSFORM.</span>
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 820px) {
+          #about > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 };
@@ -157,7 +159,7 @@ const StatCard: React.FC<{
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? 'rgba(20,35,60,0.95)' : 'rgba(13,21,37,0.9)',
+        background: hovered ? 'rgba(16,37,68,0.95)' : 'rgba(12,29,56,0.9)',
         border: `1px solid ${hovered ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.07)'}`,
         borderRadius: '16px',
         padding: '28px 24px',
@@ -169,35 +171,26 @@ const StatCard: React.FC<{
       }}
     >
       <div style={{
-        width: 44,
-        height: 44,
+        width: 44, height: 44,
         borderRadius: '10px',
         background: 'rgba(201,168,76,0.1)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         marginBottom: 20,
-      }}>
-        {icon}
-      </div>
+      }}>{icon}</div>
       <div style={{
         fontFamily: 'var(--font-pixel)',
-        fontSize: '22px',
+        fontSize: '20px',
         color: 'var(--text-white)',
         marginBottom: 8,
         lineHeight: 1,
-      }}>
-        {value}
-      </div>
+      }}>{value}</div>
       <div style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '10px',
         color: 'rgba(255,255,255,0.4)',
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
-      }}>
-        {label}
-      </div>
+      }}>{label}</div>
     </div>
   );
 };

@@ -2,117 +2,30 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const sponsors = [
   {
-    id: 'ibm',
-    name: 'IBM Company',
-    description: 'IBM (International Business Machines Corporation) is a global technology and innovation company. It offers cloud computing, software, artificial intelligence, and enterprise solutions to clients worldwide.',
-    tags: ['#IBM', '#Technology', '#Enterprise'],
-    logo: <IbmLogo />,
+    name: 'Algorand',
+    tagline: 'Leading Layer-1 Blockchain for the Future of Web3',
+    description: 'A high-performance Layer-1 blockchain platform designed for speed, security, and scalability. It enables developers to build decentralized applications, digital assets, and enterprise-grade blockchain solutions with near-instant finality and low transaction costs. Its energy-efficient Pure Proof-of-Stake consensus makes it a sustainable choice for the next generation of Web3 innovation.',
+    category: 'BLOCKCHAIN PARTNER',
+    accent: 'rgba(60,140,220,0.15)',
+    border: 'rgba(60,140,220,0.3)',
   },
   {
-    id: '1m1b',
-    name: '1M1B Foundation',
-    description: '1M1B (1 Million for 1 Billion) is a social impact organization created to mobilize youth to solve real-world problems. It focuses on digital empowerment, entrepreneurship education, and social innovation.',
-    tags: ['#1M1BInitiative', '#SocialImpact', '#Mentorship'],
-    logo: <FoundationLogo />,
+    name: 'OSEN',
+    tagline: 'Empowering Hackathons & Developer Communities Across India',
+    description: 'A technology-driven organization that supports hackathons, workshops, and developer communities by providing sponsorships, mentorship, speakers, swags, and community growth opportunities. It collaborates with colleges, student communities, and ecosystem partners to help aspiring builders transform innovative ideas into impactful projects.',
+    category: 'COMMUNITY PARTNER',
+    accent: 'rgba(201,168,76,0.15)',
+    border: 'rgba(201,168,76,0.3)',
   },
   {
-    id: 'celonis',
-    name: 'Celonis',
-    description: 'Celonis is the global leader in execution management and process mining technology, enabling companies to unlock massive value from their business processes.',
-    tags: ['#Celonis', '#ProcessMining', '#TechPartner'],
-    logo: <CelonisLogo />,
+    name: 'Mewayz Global Corporation',
+    tagline: 'AI-Powered Business Operating Platform for the Next Generation of Startups',
+    description: 'A part of Orcrys Technologies, Mewayz is an AI-powered Business Operating Platform helping startups, creators, and enterprises scale through intelligent automation. With engineering and AI product teams in Kolkata, Mewayz develops advanced AI orchestration, Web3 solutions, CRM systems, website builders, payment management, and marketing tools within a unified platform. The company also collaborates with leading academic institutions to foster innovation, entrepreneurship, and startup development.',
+    category: 'AI & TECH PARTNER',
+    accent: 'rgba(45,184,166,0.15)',
+    border: 'rgba(45,184,166,0.3)',
   },
 ];
-
-function IbmLogo() {
-  return (
-    <div style={{
-      width: 140,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 5,
-    }}>
-      {[...Array(8)].map((_, i) => (
-        <div key={i} style={{
-          height: 6,
-          background: 'rgba(255,255,255,0.85)',
-          borderRadius: 1,
-          // IBM stripe style — gaps at letter positions
-          clipPath: i % 2 === 0
-            ? 'inset(0 0 0 0)'
-            : 'polygon(0 0, 25% 0, 25% 100%, 0 100%, 0 0, 0 0, 33% 0, 33% 100%, 25% 100%, 25% 0, 58% 0, 58% 100%, 50% 100%, 50% 0, 75% 0, 75% 100%, 66% 100%, 66% 0)',
-        }} />
-      ))}
-    </div>
-  );
-}
-
-function FoundationLogo() {
-  return (
-    <div style={{
-      width: 90,
-      height: 90,
-      borderRadius: '50%',
-      background: 'linear-gradient(135deg, #ff6b2b 0%, #f7931e 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      boxShadow: '0 4px 20px rgba(247,147,30,0.35)',
-    }}>
-      <div style={{ fontFamily: 'var(--font-pixel)', fontSize: '11px', color: '#fff', lineHeight: 1.1, textAlign: 'center', marginBottom: 3 }}>
-        1M<br />1B
-      </div>
-      <div style={{ fontFamily: 'var(--font-sans)', fontSize: '6px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em', textAlign: 'center', lineHeight: 1.3 }}>
-        1 MILLION<br />1 BILLION
-      </div>
-    </div>
-  );
-}
-
-function CelonisLogo() {
-  return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-    }}>
-      {/* Celonis "c" circle mark */}
-      <div style={{
-        width: 36,
-        height: 36,
-        borderRadius: '50%',
-        border: '3px solid rgba(255,255,255,0.7)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute',
-          right: -2,
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: 12,
-          height: 12,
-          background: 'var(--bg-card)',
-          borderRadius: '50%',
-        }} />
-      </div>
-      <span style={{
-        fontFamily: 'var(--font-sans)',
-        fontSize: '24px',
-        fontWeight: 300,
-        color: 'rgba(255,255,255,0.85)',
-        letterSpacing: '-0.02em',
-        fontStyle: 'italic',
-      }}>
-        celonis
-      </span>
-    </div>
-  );
-}
 
 const Sponsors: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -132,37 +45,42 @@ const Sponsors: React.FC = () => {
       background: 'var(--bg-dark)',
       padding: '100px 48px',
       position: 'relative',
+      overflow: 'hidden',
     }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="section-label">BACKED BY</span>
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)',
+        backgroundSize: '60px 60px',
+      }} />
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+        <div style={{ marginBottom: 56, textAlign: 'center' }}>
+          <span className="section-label">OUR SPONSORS</span>
           <h2 className="pixel-heading" style={{
-            fontSize: 'clamp(28px, 4vw, 52px)',
-            marginTop: 12,
+            fontSize: 'clamp(20px, 2.8vw, 36px)',
             color: 'var(--text-white)',
+            lineHeight: 1.4,
+            marginTop: 8,
             animation: visible ? 'fadeInUp 0.8s ease' : 'none',
           }}>
-            Sponsors &amp;{' '}
-            <span style={{ color: 'var(--gold)' }}>Partners</span>
+            Backed by the <span style={{ color: 'var(--gold)' }}>Best</span>
           </h2>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 15,
+            fontSize: 14,
             color: 'rgba(255,255,255,0.5)',
-            marginTop: 20,
-            maxWidth: 560,
-            margin: '20px auto 0',
+            marginTop: 16,
+            maxWidth: 500,
+            margin: '16px auto 0',
             lineHeight: 1.7,
           }}>
-            Partnering with world-leading technology organizations and social impact initiatives to empower student innovation.
+            Industry leaders powering Voyage 2026 with technology, mentorship, and resources.
           </p>
         </div>
 
-        {/* Sponsor cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
           {sponsors.map((s, i) => (
-            <SponsorCard key={s.id} sponsor={s} index={i} visible={visible} />
+            <SponsorCard key={i} sponsor={s} index={i} visible={visible} />
           ))}
         </div>
       </div>
@@ -170,11 +88,7 @@ const Sponsors: React.FC = () => {
   );
 };
 
-const SponsorCard: React.FC<{
-  sponsor: typeof sponsors[0];
-  index: number;
-  visible: boolean;
-}> = ({ sponsor, index, visible }) => {
+const SponsorCard: React.FC<{ sponsor: typeof sponsors[0]; index: number; visible: boolean }> = ({ sponsor, index, visible }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -183,78 +97,63 @@ const SponsorCard: React.FC<{
       onMouseLeave={() => setHovered(false)}
       style={{
         display: 'grid',
-        gridTemplateColumns: '280px 1fr',
-        background: hovered ? 'rgba(18,30,52,0.95)' : 'rgba(13,21,37,0.85)',
-        border: `1px solid ${hovered ? 'rgba(201,168,76,0.25)' : 'rgba(255,255,255,0.06)'}`,
-        borderRadius: '16px',
+        gridTemplateColumns: '300px 1fr',
+        gap: 0,
+        background: hovered ? 'rgba(16,37,68,0.95)' : 'rgba(12,29,56,0.9)',
+        border: `1px solid ${hovered ? sponsor.border : 'rgba(255,255,255,0.08)'}`,
+        borderRadius: '20px',
         overflow: 'hidden',
-        transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
-        transform: hovered ? 'translateX(4px)' : 'translateX(0)',
-        animation: visible ? `fadeInUp 0.7s ease ${index * 150}ms both` : 'none',
-        cursor: 'default',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        boxShadow: hovered ? `0 16px 48px rgba(0,0,0,0.4)` : 'none',
+        animation: visible ? `fadeInUp 0.7s ease ${index * 120}ms both` : 'none',
       }}
     >
-      {/* Logo panel */}
+      {/* Left — logo area */}
       <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '48px 40px',
-        borderRight: '1px solid rgba(255,255,255,0.05)',
-        background: 'rgba(8,14,26,0.5)',
-        minHeight: 160,
+        background: sponsor.accent,
+        borderRight: `1px solid ${sponsor.border}`,
+        padding: '40px 32px',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center',
       }}>
-        {sponsor.logo}
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '9px', color: 'rgba(255,255,255,0.5)',
+          letterSpacing: '0.2em', textTransform: 'uppercase',
+          marginBottom: 16,
+        }}>{sponsor.category}</span>
+        <h3 style={{
+          fontFamily: 'var(--font-pixel)',
+          fontSize: '18px', color: 'var(--text-white)',
+          lineHeight: 1.4, marginBottom: 12,
+        }}>{sponsor.name}</h3>
+        <div style={{
+          width: 40, height: 2,
+          background: sponsor.border,
+          borderRadius: 2,
+        }} />
       </div>
 
-      {/* Info panel */}
-      <div style={{ padding: '40px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <h3 className="pixel-heading" style={{
-          fontSize: 'clamp(14px, 1.5vw, 18px)',
-          color: 'var(--text-white)',
-          marginBottom: 16,
-          lineHeight: 1.4,
-        }}>
-          {sponsor.name}
-        </h3>
+      {/* Right — description */}
+      <div style={{ padding: '36px 36px' }}>
         <p style={{
           fontFamily: 'var(--font-sans)',
-          fontSize: 13,
-          color: 'rgba(255,255,255,0.5)',
-          lineHeight: 1.75,
-          marginBottom: 24,
-          maxWidth: 560,
-        }}>
-          {sponsor.description}
-        </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-          {sponsor.tags.map(tag => (
-            <span
-              key={tag}
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '12px',
-                color: 'rgba(255,255,255,0.5)',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                padding: '6px 14px',
-                borderRadius: '999px',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = 'rgba(201,168,76,0.9)';
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+          fontSize: '15px', color: 'rgba(255,255,255,0.85)',
+          fontWeight: 500, lineHeight: 1.5,
+          marginBottom: 14,
+        }}>{sponsor.tagline}</p>
+        <p style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '13px', color: 'rgba(255,255,255,0.5)',
+          lineHeight: 1.8,
+        }}>{sponsor.description}</p>
       </div>
+
+      <style>{`
+        @media (max-width: 700px) {
+          .sponsor-card { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 };
