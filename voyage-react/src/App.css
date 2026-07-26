@@ -1361,41 +1361,79 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-btn { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu { display: flex; }
-  .navbar { padding: 10px 16px; top: 10px; width: min(96vw, 480px); }
-  .nav-logo { font-size: 11px; gap: 7px; }
-  .nav-logo .logo-anchor { font-size: 13px; }
+  /* ── NAVBAR: hide desktop items, show hamburger only ── */
+  .nav-links    { display: none !important; }
+  .nav-btn      { display: none !important; }
+  .hamburger    { display: flex !important; }
+  .mobile-menu  { display: flex; }
 
-  .section-inner { padding: 72px 24px; }
-  .hero-body { padding: 130px 24px 60px; flex-direction: column; align-items: flex-start; gap: 32px; }
-  .hero-3d { display: none; }
-  .hero-partners { padding: 20px 24px; gap: 24px; }
-  .about-inner { padding: 72px 24px; }
-  .glimpses-head { padding: 60px 24px 32px; }
-  .gallery-track { padding: 0 24px 40px; }
-  .footer-inner { padding: 48px 24px 28px; }
-  .footer-bottom { padding: 20px 24px 28px; flex-direction: column; align-items: center; text-align: center; }
-  .reg-card { padding: 36px 24px; }
+  /* Navbar pill — compact */
+  .navbar {
+    top: 8px;
+    padding: 9px 14px;
+    width: min(95vw, 440px);
+    border-radius: 10px;
+  }
+  .nav-logo { font-size: 10px; gap: 6px; letter-spacing: 1.5px; }
+  .nav-logo .logo-anchor { font-size: 12px; }
+
+  /* Hero */
+  .hero-body {
+    padding: 100px 20px 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-3d      { display: none !important; }
+  .hero-eyebrow { font-size: 9px; padding: 5px 12px; letter-spacing: 2px; margin-bottom: 16px; }
+  .hero-tagline { font-size: 10px; letter-spacing: 2.5px; }
+  .hero-sub     { font-size: 13px; margin-bottom: 28px; }
+  .hero-title   { font-size: clamp(30px, 9vw, 48px); margin-bottom: 8px; }
+  .hero-btns    { gap: 10px; flex-direction: column; align-items: flex-start; }
+  .btn-gold, .btn-outline { font-size: 10px; padding: 12px 20px; }
+  .hero-partners { padding: 16px 20px; gap: 18px; flex-wrap: wrap; }
+  .partner-logo-tag { font-size: 10px; padding: 4px 10px; }
+  .hero-scroll-hint { display: none; }
+
+  /* Sections */
+  .section-inner { padding: 64px 20px; }
+  .about-inner   { padding: 64px 20px; }
+  .glimpses-head { padding: 56px 20px 28px; }
+  .gallery-track { padding: 0 20px 36px; }
+
+  /* Register */
+  .reg-card { padding: 32px 20px; }
   .form-row, .form-row.triple { grid-template-columns: 1fr; }
+
+  /* Prizes */
   .prize-breakdown { grid-template-columns: 1fr; }
-  .tl-item { grid-template-columns: 70px 36px 1fr; }
-  .hero-title { font-size: clamp(32px, 10vw, 52px); }
-  .hero-sub { font-size: 14px; }
-  .hero-btns { gap: 12px; }
-  .btn-gold, .btn-outline { font-size: 10px; padding: 13px 22px; }
+  .prize-card { padding: 24px 18px; }
+
+  /* Timeline */
+  .tl-item { grid-template-columns: 70px 32px 1fr; }
+
+  /* Footer */
+  .footer-inner  { padding: 44px 20px 24px; }
+  .footer-bottom { padding: 18px 20px 24px; flex-direction: column; align-items: center; text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .navbar { padding: 11px 18px; }
-  .nav-logo { font-size: 11px; }
-  .section-inner { padding: 60px 18px; }
-  .about-inner { padding: 60px 18px; }
-  .hero-body { padding: 120px 18px 50px; }
-  .hero-partners { padding: 18px; gap: 18px; flex-direction: column; align-items: flex-start; }
-  .tl-item { grid-template-columns: 64px 32px 1fr; }
-  .tl-date { font-size: 8px; padding-right: 12px; }
-  .prize-card { padding: 26px 18px; }
+  /* Navbar even tighter */
+  .navbar { padding: 8px 12px; top: 6px; border-radius: 9px; }
+  .nav-logo { font-size: 9px; gap: 5px; }
+  .nav-logo .logo-anchor { font-size: 11px; }
+  .hamburger span { width: 18px; }
+
+  /* Hero */
+  .hero-body { padding: 88px 16px 44px; }
+  .hero-title { font-size: clamp(28px, 8.5vw, 38px); }
+  .hero-eyebrow { font-size: 8px; letter-spacing: 1.5px; padding: 4px 10px; }
+  .hero-partners { flex-direction: column; gap: 14px; padding: 14px 16px; }
+
+  /* Sections */
+  .section-inner { padding: 52px 16px; }
+  .about-inner   { padding: 52px 16px; }
+  .tl-item { grid-template-columns: 58px 28px 1fr; }
+  .tl-date { font-size: 8px; padding-right: 10px; }
+  .gallery-item { flex: 0 0 240px; }
 }
