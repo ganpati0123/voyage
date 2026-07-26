@@ -174,6 +174,7 @@ section {
   background: var(--gold-dim);
 }
 .nav-btn {
+  display: none; /* hidden on mobile — shown on desktop via min-width below */
   background: var(--gold);
   color: #06080f;
   border: none;
@@ -195,7 +196,7 @@ section {
   box-shadow: 0 4px 24px rgba(212,168,67,0.5);
 }
 .hamburger {
-  display: none;
+  display: flex; /* shown on mobile by default */
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
@@ -214,9 +215,9 @@ section {
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--gold); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--gold); }
-/* Mobile nav drawer */
+/* Mobile nav drawer — flex by default (mobile), hidden on desktop via min-width query */
 .mobile-menu {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0; left: 0; right: 0;
   background: rgba(2,8,16,0.97);
@@ -1348,6 +1349,14 @@ footer {
   color: var(--text3);
 }
 
+/* ── DESKTOP: show nav items, hide mobile-only elements ── */
+@media (min-width: 769px) {
+  .nav-links   { display: flex; }
+  .nav-btn     { display: inline-flex; }
+  .hamburger   { display: none; }
+  .mobile-menu { display: none !important; }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1361,11 +1370,8 @@ footer {
 }
 
 @media (max-width: 768px) {
-  /* ── NAVBAR: hide desktop items, show hamburger only ── */
-  .nav-links    { display: none !important; }
-  .nav-btn      { display: none !important; }
-  .hamburger    { display: flex !important; }
-  .mobile-menu  { display: flex; }
+  /* Nav links still hidden on mobile */
+  .nav-links { display: none !important; }
 
   /* Navbar pill — compact */
   .navbar {
