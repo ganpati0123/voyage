@@ -1,29 +1,29 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const sponsors = [
   {
     name: 'Algorand',
-    tagline: 'Leading Layer-1 Blockchain for the Future of Web3',
-    description: 'A high-performance Layer-1 blockchain platform designed for speed, security, and scalability. It enables developers to build decentralized applications, digital assets, and enterprise-grade blockchain solutions with near-instant finality and low transaction costs. Its energy-efficient Pure Proof-of-Stake consensus makes it a sustainable choice for the next generation of Web3 innovation.',
-    category: 'BLOCKCHAIN PARTNER',
+    tagline: 'The leading Layer-1 blockchain for the future of the decentralized seas',
+    description: 'A high-performance Layer-1 blockchain forged for speed, security, and scalability. It empowers builders to craft decentralized applications, digital assets, and enterprise-grade blockchain solutions with near-instant finality and a pittance in transaction cost. Its energy-efficient Pure Proof-of-Stake consensus renders it a sustainable vessel for the next generation of Web3 voyages.',
+    category: 'BLOCKCHAIN ALLY',
     accent: '#4a90d9',
-    glow: 'rgba(74,144,217,0.3)',
+    glow: 'rgba(74,144,217,0.32)',
   },
   {
     name: 'OSEN',
-    tagline: 'Empowering Hackathons & Developer Communities Across India',
-    description: 'A technology-driven organization that supports hackathons, workshops, and developer communities by providing sponsorships, mentorship, speakers, swags, and community growth opportunities. It collaborates with colleges, student communities, and ecosystem partners to help aspiring builders transform innovative ideas into impactful projects.',
-    category: 'COMMUNITY PARTNER',
+    tagline: 'Empowering hackathons & builder fleets across the realm',
+    description: 'A technology-driven fellowship that champions hackathons, workshops, and developer crews by bestowing sponsorships, mentorship, speakers, swag, and growth opportunities. It allies with colleges, student communities, and ecosystem partners to help aspiring builders transform bold ideas into impactful treasures.',
+    category: 'COMMUNITY ALLY',
     accent: '#d4af37',
-    glow: 'rgba(212,175,55,0.3)',
+    glow: 'rgba(212,175,55,0.32)',
   },
   {
     name: 'Mewayz Global Corporation',
-    tagline: 'AI-Powered Business Operating Platform for the Next Generation of Startups',
-    description: 'A part of Orcrys Technologies, Mewayz is an AI-powered Business Operating Platform helping startups, creators, and enterprises scale through intelligent automation. With engineering and AI product teams in Kolkata, Mewayz develops advanced AI orchestration, Web3 solutions, CRM systems, website builders, payment management, and marketing tools within a unified platform. The company also collaborates with leading academic institutions to foster innovation, entrepreneurship, and startup development.',
-    category: 'AI & TECH PARTNER',
+    tagline: 'AI-powered business operating platform for the next wave of ventures',
+    description: 'A part of Orcrys Technologies, Mewayz is an AI-powered Business Operating Platform helping ventures, creators, and enterprises scale through intelligent automation. With engineering and AI product crews in Kolkata, Mewayz forges advanced AI orchestration, Web3 solutions, CRM systems, website builders, payment management, and marketing tools within a unified deck. The company also collaborates with leading academies to nurture innovation, entrepreneurship, and venture development.',
+    category: 'AI & TECH ALLY',
     accent: '#2db8a6',
-    glow: 'rgba(45,184,166,0.3)',
+    glow: 'rgba(45,184,166,0.32)',
   },
 ];
 
@@ -42,44 +42,41 @@ const Sponsors: React.FC = () => {
 
   return (
     <section id="sponsors" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #030712 0%, #060d1c 100%)',
-      padding: '120px 48px',
+      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
+      padding: '130px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ marginBottom: 64, textAlign: 'center' }}>
-          <span className="section-label">OUR SPONSORS</span>
+      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ marginBottom: 68, textAlign: 'center' }}>
+          <span className="section-label">The Brotherhood of Allies</span>
           <h2 style={{
-            fontFamily: "'Pirata One', serif",
-            fontSize: 'clamp(36px, 5vw, 64px)',
+            fontFamily: 'var(--font-pirate)',
+            fontSize: 'clamp(40px, 5.5vw, 72px)',
             color: 'var(--text-white)',
-            lineHeight: 1,
-            marginTop: 16,
-            animation: visible ? 'fadeInUp 0.8s ease' : 'none',
+            lineHeight: 0.95,
+            marginTop: 18,
+            animation: visible ? 'fadeInUp 0.9s ease' : 'none',
           }}>
-            Backed by the <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Best</span>
+            Backed by the <span className="gold-text">Finest</span>
           </h2>
-          <div className="ornament">
-            <div className="ornament-line" />
-            <div className="ornament-dot" />
-            <div className="ornament-line" />
-          </div>
+          <div className="ornament" />
           <p style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 14,
-            color: 'rgba(255,255,255,0.5)',
-            maxWidth: 500,
+            fontFamily: 'var(--font-body)',
+            fontSize: '15px',
+            color: 'rgba(141,165,196,0.62)',
+            maxWidth: 540,
             margin: '0 auto',
-            lineHeight: 1.8,
+            lineHeight: 1.9,
           }}>
-            Industry leaders powering Voyage 2026 with technology, mentorship, and resources.
+            Industry titans powering Voyage with technology, counsel, and the resources to conquer
+            the deep.
           </p>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
           {sponsors.map((s, i) => (
             <SponsorCard key={i} sponsor={s} index={i} visible={visible} />
           ))}
@@ -99,73 +96,73 @@ const SponsorCard: React.FC<{ sponsor: typeof sponsors[0]; index: number; visibl
       className="glass-card"
       style={{
         display: 'grid',
-        gridTemplateColumns: '320px 1fr',
+        gridTemplateColumns: '340px 1fr',
         gap: 0,
-        transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-        boxShadow: hovered ? `0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px ${sponsor.glow}` : 'none',
+        transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
+        transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
+        boxShadow: hovered ? `0 24px 56px rgba(0,0,0,0.5), 0 0 0 1px ${sponsor.glow}` : 'none',
         animation: visible ? `fadeInUp 0.7s ease ${index * 120}ms both` : 'none',
       }}
     >
       {/* Left — logo area */}
       <div style={{
         background: `linear-gradient(135deg, ${sponsor.glow}, transparent)`,
-        borderRight: `1px solid ${sponsor.accent}30`,
-        padding: '44px 36px',
+        borderRight: `1px solid ${sponsor.accent}33`,
+        padding: '48px 40px',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Glow */}
         <div style={{
-          position: 'absolute', top: -40, right: -40,
-          width: 120, height: 120, borderRadius: '50%',
+          position: 'absolute', top: -48, right: -48,
+          width: 130, height: 130, borderRadius: '50%',
           background: `radial-gradient(circle, ${sponsor.glow} 0%, transparent 70%)`,
-          opacity: hovered ? 0.6 : 0.2,
+          opacity: hovered ? 0.7 : 0.22,
           transition: 'opacity 0.4s',
           pointerEvents: 'none',
         }} />
         <span style={{
           fontFamily: 'var(--font-mono)',
           fontSize: '9px', color: sponsor.accent,
-          letterSpacing: '0.2em', textTransform: 'uppercase',
-          marginBottom: 18,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          marginBottom: 20,
           position: 'relative', zIndex: 1,
+          fontWeight: 600,
         }}>{sponsor.category}</span>
         <h3 style={{
-          fontFamily: "'Pirata One', serif",
-          fontSize: '28px', color: 'var(--text-white)',
-          lineHeight: 1.2, marginBottom: 16,
+          fontFamily: 'var(--font-pirate)',
+          fontSize: '30px', color: 'var(--text-white)',
+          lineHeight: 1.15, marginBottom: 18,
           position: 'relative', zIndex: 1,
-          textShadow: hovered ? `0 0 20px ${sponsor.glow}` : 'none',
+          textShadow: hovered ? `0 0 24px ${sponsor.glow}` : 'none',
           transition: 'text-shadow 0.3s',
         }}>{sponsor.name}</h3>
         <div style={{
-          width: 48, height: 3,
+          width: 54, height: 3,
           background: sponsor.accent,
           borderRadius: 2,
-          boxShadow: `0 0 10px ${sponsor.glow}`,
+          boxShadow: `0 0 12px ${sponsor.glow}`,
         }} />
       </div>
 
       {/* Right — description */}
-      <div style={{ padding: '40px 40px' }}>
+      <div style={{ padding: '44px 44px' }}>
         <p style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: '16px', color: 'rgba(255,255,255,0.85)',
-          fontWeight: 500, lineHeight: 1.5,
-          marginBottom: 16,
+          fontFamily: 'var(--font-display)',
+          fontSize: '17px', color: 'rgba(240,244,250,0.9)',
+          fontWeight: 600, lineHeight: 1.5,
+          marginBottom: 18,
         }}>{sponsor.tagline}</p>
         <p style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '13px', color: 'rgba(255,255,255,0.5)',
+          fontFamily: 'var(--font-body)',
+          fontSize: '13.5px', color: 'rgba(141,165,196,0.65)',
           lineHeight: 1.9,
         }}>{sponsor.description}</p>
       </div>
 
       <style>{`
         @media (max-width: 700px) {
-          .sponsor-card { grid-template-columns: 1fr !important; }
+          .glass-card[style*="340px"] { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

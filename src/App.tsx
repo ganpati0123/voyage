@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg-deep)' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--abyss)' }}>
       <Navbar />
       <Hero />
       <About />

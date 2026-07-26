@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
 
 const useCountUp = (target: number, duration = 2000, start = false) => {
@@ -37,84 +37,91 @@ const About: React.FC = () => {
 
   return (
     <section id="about" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #030712 0%, #060d1c 100%)',
-      padding: '120px 48px',
+      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
+      padding: '130px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
       <div style={{
-        position: 'absolute', top: '10%', left: '5%',
-        width: 400, height: 400,
-        background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)',
+        position: 'absolute', top: '12%', left: '4%',
+        width: 480, height: 480,
+        background: 'radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '8%', right: '6%',
+        width: 360, height: 360,
+        background: 'radial-gradient(circle, rgba(45,184,166,0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="section-label">ABOUT VOYAGE</span>
+      <div style={{ maxWidth: '1240px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
+          <span className="section-label">The Tale of Voyage</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 72, alignItems: 'start' }}>
           {/* Left */}
           <div>
             <h2 style={{
-              fontFamily: "'Pirata One', serif",
-              fontSize: 'clamp(40px, 6vw, 72px)',
+              fontFamily: 'var(--font-pirate)',
+              fontSize: 'clamp(44px, 6.5vw, 80px)',
               color: 'var(--text-white)',
-              lineHeight: 1,
-              marginBottom: 8,
-              animation: visible ? 'slideInLeft 0.8s ease forwards' : 'none',
+              lineHeight: 0.95,
+              marginBottom: 10,
+              animation: visible ? 'slideInLeft 0.9s ease forwards' : 'none',
             }}>
               Beyond the
             </h2>
-            <h2 style={{
-              fontFamily: "'Pirata One', serif",
-              fontSize: 'clamp(48px, 7vw, 88px)',
-              background: 'linear-gradient(180deg, #ffe27a, #d4af37, #8a6f30)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              lineHeight: 1,
-              marginBottom: 36,
-              textShadow: '0 0 60px rgba(212,175,55,0.2)',
-              animation: visible ? 'slideInLeft 0.8s ease 0.1s forwards' : 'none',
+            <h2 className="gold-text" style={{
+              fontFamily: 'var(--font-pirate)',
+              fontSize: 'clamp(52px, 7.5vw, 96px)',
+              lineHeight: 0.95,
+              marginBottom: 40,
+              animation: visible ? 'slideInLeft 0.9s ease 0.12s forwards' : 'none',
               opacity: 0,
             }}>
-              Horizon
+              Horizon's Edge
             </h2>
 
             <p style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '15px',
-              color: 'rgba(255,255,255,0.8)',
-              lineHeight: 1.9,
-              marginBottom: 20,
+              fontFamily: 'var(--font-body)',
+              fontSize: '16px',
+              color: 'rgba(212,220,235,0.82)',
+              lineHeight: 1.95,
+              marginBottom: 22,
             }}>
-              Voyage – Beyond the Horizon is a premier 36-hour innovation challenge that brings together students, developers, designers, and innovators to solve real-world problems through technology.
+              Voyage — Beyond the Horizon is a premier 36-hour odyssey that gathers the fiercest
+              minds, dreamers, and builders to conquer real-world storms through the craft of code.
             </p>
 
             <p style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '13px',
-              color: 'rgba(255,255,255,0.5)',
-              lineHeight: 1.9,
-              marginBottom: 20,
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              color: 'rgba(141,165,196,0.7)',
+              lineHeight: 1.95,
+              marginBottom: 22,
             }}>
-              Over 36 hours of continuous brainstorming, collaboration, and technical creativity, participants will transform ideas into impactful solutions while pushing the boundaries of innovation.
+              Across a relentless tide of continuous brainstorming, collaboration, and technical daring,
+              crews shall transform raw ideas into treasure — pushing the very boundaries of what is possible.
+              Whether ye hail from the isles of AI, the coves of Blockchain, the shoals of FinTech, the
+              springs of Healthcare, or the open seas of Innovation, Voyage offers the proving ground to
+              learn, experiment, and rise.
             </p>
 
             <p style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '13px',
-              color: 'rgba(255,255,255,0.5)',
-              lineHeight: 1.9,
-              marginBottom: 36,
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              color: 'rgba(141,165,196,0.55)',
+              lineHeight: 1.95,
+              marginBottom: 40,
             }}>
-              Whether you're passionate about AI, Blockchain, FinTech, Healthcare, or Open Innovation, Voyage provides the perfect environment to learn, experiment, and grow. Collaborate with like-minded innovators, receive mentorship from industry experts, and gain hands-on experience building solutions under pressure.
+              Forge alliances with kindred innovators, heed the counsel of seasoned captains of industry,
+              and earn yer stripes building solutions under the pressure of the deep.
             </p>
 
-            {/* Ornament divider */}
-            <div className="ornament">
+            <div className="ornament" style={{ justifyContent: 'flex-start', margin: '32px 0 0' }}>
               <div className="ornament-line" />
               <div className="ornament-dot" />
               <div className="ornament-line" />
@@ -122,39 +129,38 @@ const About: React.FC = () => {
           </div>
 
           {/* Right — stat cards */}
-          <div style={{ display: 'flex', gap: 20, flexDirection: 'column' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-              <StatCard icon={<Calendar size={22} color="var(--gold)" />} value={`${hours} Hrs`} label="Build Duration" visible={visible} delay={0} />
-              <StatCard icon={<Users size={22} color="var(--gold)" />} value={`${members}+`} label="GRID Members" visible={visible} delay={200} />
-              <StatCard icon={<Trophy size={22} color="var(--gold)" />} value="₹25K" label="Prize Pool" visible={visible} delay={400} />
-              <StatCard icon={<MapPin size={22} color="var(--gold)" />} value="TBD" label="Hosted At" visible={visible} delay={600} />
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
+            <StatCard icon={<Calendar size={22} color="var(--gold-6)" />} value={`${hours} Hrs`} label="The Relentless Tide" visible={visible} delay={0} />
+            <StatCard icon={<Users size={22} color="var(--gold-6)" />} value={`${members}+`} label="Soulsof the Fleet" visible={visible} delay={200} />
+            <StatCard icon={<Trophy size={22} color="var(--gold-6)" />} value="₹25K" label="The Treasure Hoard" visible={visible} delay={400} />
+            <StatCard icon={<MapPin size={22} color="var(--gold-6)" />} value="TBD" label="The Anchorage" visible={visible} delay={600} />
           </div>
         </div>
 
         {/* Quote */}
         <div style={{
-          marginTop: 80,
+          marginTop: 92,
           textAlign: 'center',
           animation: visible ? 'fadeInUp 1s ease 0.5s both' : 'none',
         }}>
           <p style={{
-            fontFamily: "'Pirata One', serif",
-            fontSize: 'clamp(28px, 4vw, 48px)',
-            color: 'rgba(255,255,255,0.9)',
-            lineHeight: 1.4,
-            letterSpacing: '0.05em',
+            fontFamily: 'var(--font-pirate)',
+            fontSize: 'clamp(30px, 4.5vw, 54px)',
+            color: 'rgba(240,244,250,0.92)',
+            lineHeight: 1.35,
+            letterSpacing: '0.06em',
           }}>
-            <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>EXPLORE.</span>{' '}
-            <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>INNOVATE.</span>{' '}
-            <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>TRANSFORM.</span>
+            <span className="gold-text">EXPLORE.</span>{' '}
+            <span className="gold-text">CONQUER.</span>{' '}
+            <span className="gold-text">TRANSFORM.</span>
           </p>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 820px) {
-          #about > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; }
+        @media (max-width: 900px) {
+          #about > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; gap: 56px !important; }
+          #about > div:last-child > div:nth-child(2) > div:last-child { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </section>
@@ -176,38 +182,36 @@ const StatCard: React.FC<{
       onMouseLeave={() => setHovered(false)}
       className="glass-card"
       style={{
-        padding: '28px 24px',
-        transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-        transform: hovered ? 'translateY(-6px) scale(1.02)' : 'translateY(0)',
-        boxShadow: hovered ? '0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.2)' : 'none',
+        padding: '30px 26px',
+        transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
+        transform: hovered ? 'translateY(-8px) scale(1.03)' : 'translateY(0)',
+        boxShadow: hovered ? '0 24px 56px rgba(0,0,0,0.6)' : 'none',
         animation: visible ? `fadeInUp 0.7s ease ${delay}ms both` : 'none',
         cursor: 'default',
       }}
     >
       <div style={{
-        width: 48, height: 48,
-        borderRadius: '12px',
-        background: 'rgba(212,175,55,0.1)',
-        border: '1px solid rgba(212,175,55,0.2)',
+        width: 52, height: 52,
+        borderRadius: '14px',
+        background: 'rgba(212,175,55,0.12)',
+        border: '1px solid rgba(212,175,55,0.22)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        marginBottom: 20,
-        transition: 'all 0.3s ease',
-        transform: hovered ? 'scale(1.1) rotate(-5deg)' : 'scale(1) rotate(0)',
+        marginBottom: 22,
+        transition: 'all 0.35s ease',
+        transform: hovered ? 'scale(1.12) rotate(-6deg)' : 'scale(1) rotate(0)',
+        boxShadow: hovered ? '0 0 22px rgba(212,175,55,0.3)' : 'none',
       }}>{icon}</div>
-      <div style={{
-        fontFamily: "'Pirata One', serif",
-        fontSize: '28px',
-        background: 'linear-gradient(180deg, #ffe27a, #d4af37)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        marginBottom: 8,
+      <div className="gold-text" style={{
+        fontFamily: 'var(--font-pirate)',
+        fontSize: '30px',
+        marginBottom: 9,
         lineHeight: 1,
       }}>{value}</div>
       <div style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '9px',
-        color: 'rgba(255,255,255,0.4)',
-        letterSpacing: '0.15em',
+        color: 'rgba(141,165,196,0.55)',
+        letterSpacing: '0.18em',
         textTransform: 'uppercase',
       }}>{label}</div>
     </div>

@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Sunrise, Sun, Sunset, Moon, Utensils, Gamepad2, Users, Gavel, Flag } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Sunrise, Sun, Sunset, Utensils, Gamepad2, Users, Gavel, Flag } from 'lucide-react';
 
 const schedule = [
-  { time: 'Day 1', title: 'Orientation', icon: <Flag size={18} />, phase: 'start' },
-  { time: 'Day 1', title: 'Hackathon Start', icon: <Sunrise size={18} />, phase: 'start' },
-  { time: 'Day 1', title: 'Morning Session - 1', icon: <Sun size={18} />, phase: 'build' },
-  { time: 'Day 1', title: 'Lunch', icon: <Utensils size={18} />, phase: 'break' },
-  { time: 'Day 1', title: 'Evening Snacks - 1', icon: <Utensils size={18} />, phase: 'break' },
-  { time: 'Day 1', title: 'Leisure Game - 1', icon: <Gamepad2 size={18} />, phase: 'fun' },
-  { time: 'Day 1', title: 'Dinner', icon: <Utensils size={18} />, phase: 'break' },
-  { time: 'Day 1', title: 'Mentoring Session - 2', icon: <Users size={18} />, phase: 'mentor' },
-  { time: 'Day 1', title: 'Leisure Game - 2', icon: <Gamepad2 size={18} />, phase: 'fun' },
-  { time: 'Day 2', title: 'Mentoring Session - 3', icon: <Users size={18} />, phase: 'mentor' },
-  { time: 'Day 2', title: 'Judges Round + Submission Window Live', icon: <Gavel size={18} />, phase: 'judge' },
-  { time: 'Day 2', title: 'Breakfast', icon: <Utensils size={18} />, phase: 'break' },
-  { time: 'Day 2', title: 'Lunch', icon: <Utensils size={18} />, phase: 'break' },
-  { time: 'Day 2', title: 'Closing Ceremony', icon: <Flag size={18} />, phase: 'end' },
-  { time: 'Day 2', title: 'Hackathon Ends', icon: <Sunset size={18} />, phase: 'end' },
+  { time: 'Day the First', title: 'Orientation of the Fleet', icon: <Flag size={18} />, phase: 'start' },
+  { time: 'Day the First', title: 'The Voyage Begins', icon: <Sunrise size={18} />, phase: 'start' },
+  { time: 'Day the First', title: "Morning Watch — Session I", icon: <Sun size={18} />, phase: 'build' },
+  { time: 'Day the First', title: 'The Midday Feast', icon: <Utensils size={18} />, phase: 'break' },
+  { time: 'Day the First', title: "Evening Rations", icon: <Utensils size={18} />, phase: 'break' },
+  { time: 'Day the First', title: 'Deck Games — Round I', icon: <Gamepad2 size={18} />, phase: 'fun' },
+  { time: 'Day the First', title: 'The Night Feast', icon: <Utensils size={18} />, phase: 'break' },
+  { time: 'Day the First', title: "Counsel of Captains — Session II", icon: <Users size={18} />, phase: 'mentor' },
+  { time: 'Day the First', title: 'Deck Games — Round II', icon: <Gamepad2 size={18} />, phase: 'fun' },
+  { time: 'Day the Second', title: "Counsel of Captains — Session III", icon: <Users size={18} />, phase: 'mentor' },
+  { time: 'Day the Second', title: 'The Judgement & Submission Window', icon: <Gavel size={18} />, phase: 'judge' },
+  { time: 'Day the Second', title: 'Dawn Meal', icon: <Utensils size={18} />, phase: 'break' },
+  { time: 'Day the Second', title: 'The Midday Feast', icon: <Utensils size={18} />, phase: 'break' },
+  { time: 'Day the Second', title: 'Closing Ceremony', icon: <Flag size={18} />, phase: 'end' },
+  { time: 'Day the Second', title: 'The Voyage Concludes', icon: <Sunset size={18} />, phase: 'end' },
 ];
 
 const phaseColors: Record<string, string> = {
@@ -44,51 +44,46 @@ const Timeline: React.FC = () => {
 
   return (
     <section id="timeline" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #030712 0%, #060d1c 100%)',
-      padding: '120px 48px',
+      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
+      padding: '130px 48px',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ marginBottom: 64, textAlign: 'center' }}>
-          <span className="section-label">CAPTAIN'S LOG</span>
+      <div style={{ maxWidth: '1040px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ marginBottom: 72, textAlign: 'center' }}>
+          <span className="section-label">Captain's Log</span>
           <h2 style={{
-            fontFamily: "'Pirata One', serif",
-            fontSize: 'clamp(36px, 5vw, 64px)',
+            fontFamily: 'var(--font-pirate)',
+            fontSize: 'clamp(40px, 5.5vw, 72px)',
             color: 'var(--text-white)',
-            lineHeight: 1,
-            marginTop: 16,
-            animation: visible ? 'fadeInUp 0.8s ease' : 'none',
+            lineHeight: 0.95,
+            marginTop: 18,
+            animation: visible ? 'fadeInUp 0.9s ease' : 'none',
           }}>
-            The 36-Hour <span style={{ background: 'linear-gradient(180deg, #ffe27a, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Journey</span>
+            The 36-Hour <span className="gold-text">Odyssey</span>
           </h2>
-          <div className="ornament">
-            <div className="ornament-line" />
-            <div className="ornament-dot" />
-            <div className="ornament-line" />
-          </div>
+          <div className="ornament" />
           <p style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 14,
-            color: 'rgba(255,255,255,0.5)',
-            maxWidth: 500,
+            fontFamily: 'var(--font-body)',
+            fontSize: '15px',
+            color: 'rgba(141,165,196,0.62)',
+            maxWidth: 540,
             margin: '0 auto',
-            lineHeight: 1.8,
+            lineHeight: 1.9,
           }}>
-            From orientation to closing ceremony — here's how your 36 hours will unfold.
+            From the orientation of the fleet to the closing ceremony — here unfolds the chronicle
+            of yer relentless 36-hour tide.
           </p>
         </div>
 
-        {/* Timeline */}
         <div style={{ position: 'relative', paddingLeft: 0 }}>
-          {/* Center line */}
           <div style={{
             position: 'absolute',
             left: '50%', top: 0, bottom: 0,
             width: 2,
-            background: 'linear-gradient(180deg, transparent, rgba(212,175,55,0.4) 8%, rgba(212,175,55,0.4) 92%, transparent)',
+            background: 'linear-gradient(180deg, transparent, rgba(212,175,55,0.45) 8%, rgba(212,175,55,0.45) 92%, transparent)',
             transform: 'translateX(-50%)',
           }} />
 
@@ -99,59 +94,58 @@ const Timeline: React.FC = () => {
                 position: 'relative',
                 display: 'flex',
                 justifyContent: isLeft ? 'flex-end' : 'flex-start',
-                marginBottom: 28,
-                paddingRight: isLeft ? 'calc(50% + 40px)' : 0,
-                paddingLeft: isLeft ? 0 : 'calc(50% + 40px)',
-                animation: visible ? `fadeInUp 0.6s ease ${i * 60}ms both` : 'none',
+                marginBottom: 30,
+                paddingRight: isLeft ? 'calc(50% + 44px)' : 0,
+                paddingLeft: isLeft ? 0 : 'calc(50% + 44px)',
+                animation: visible ? `fadeInUp 0.6s ease ${i * 55}ms both` : 'none',
               }}>
-                {/* Node */}
                 <div style={{
                   position: 'absolute',
-                  left: '50%', top: 14,
-                  width: 16, height: 16,
+                  left: '50%', top: 16,
+                  width: 18, height: 18,
                   borderRadius: '50%',
                   background: phaseColors[item.phase],
-                  border: '3px solid #030712',
+                  border: '3px solid #02060d',
                   transform: 'translateX(-50%)',
-                  boxShadow: `0 0 16px ${phaseColors[item.phase]}`,
+                  boxShadow: `0 0 18px ${phaseColors[item.phase]}`,
                   zIndex: 2,
-                  animation: visible ? `glow-pulse 2s ease ${i * 60}ms infinite` : 'none',
+                  animation: visible ? `glowPulse 2.2s ease ${i * 55}ms infinite` : 'none',
                 }} />
 
                 <div
                   className="glass-card"
                   style={{
-                    padding: '20px 24px',
+                    padding: '22px 26px',
                     width: '100%',
-                    transition: 'all 0.3s ease',
+                    transition: 'transform 0.3s ease',
                     cursor: 'default',
                   }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
-                    e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px ${phaseColors[item.phase]}40`;
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = `0 14px 36px rgba(0,0,0,0.5), 0 0 0 1px ${phaseColors[item.phase]}50`;
                   }}
-                  onMouseLeave={e => {
+                  onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0) scale(1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 9 }}>
                     <span style={{
-                      width: 32, height: 32, borderRadius: 8,
-                      background: `${phaseColors[item.phase]}20`,
+                      width: 34, height: 34, borderRadius: 9,
+                      background: `${phaseColors[item.phase]}22`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       color: phaseColors[item.phase],
                     }}>{item.icon}</span>
                     <span style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '9px', color: 'rgba(255,255,255,0.4)',
-                      letterSpacing: '0.15em', textTransform: 'uppercase',
+                      fontSize: '9px', color: 'rgba(141,165,196,0.55)',
+                      letterSpacing: '0.18em', textTransform: 'uppercase',
                     }}>{item.time}</span>
                   </div>
                   <p style={{
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: '15px', color: 'rgba(255,255,255,0.9)',
-                    fontWeight: 500, lineHeight: 1.4,
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '16px', color: 'rgba(240,244,250,0.92)',
+                    fontWeight: 600, lineHeight: 1.35,
                   }}>{item.title}</p>
                 </div>
               </div>
@@ -163,11 +157,11 @@ const Timeline: React.FC = () => {
       <style>{`
         @media (max-width: 700px) {
           #timeline > div:last-child > div:nth-child(3) { left: 0 !important; transform: none !important; }
-          #timeline > div:last-child > div:nth-child(3) > div { left: 8px !important; }
+          #timeline > div:last-child > div:nth-child(3) > div { left: 9px !important; }
           #timeline > div:last-child > div[style*="justify-content"] {
             justify-content: flex-start !important;
             padding-right: 0 !important;
-            padding-left: 44px !important;
+            padding-left: 46px !important;
           }
         }
       `}</style>
