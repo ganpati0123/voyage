@@ -1,31 +1,37 @@
 export default function Glimpses() {
-  const items = [
-    { bg: 'linear-gradient(135deg,#0d2e28,#091a30)', emoji: '⛵', label: 'VOYAGE 2026', sub: 'First Edition — Coming Sep 2026' },
-    { bg: 'linear-gradient(135deg,#1a2e0d,#091a30)', emoji: '🏆', label: 'GRID HACKATHON', sub: 'Workshop Series' },
-    { bg: 'linear-gradient(135deg,#1a1a0d,#091a30)', emoji: '💡', label: 'BOOTCAMPS', sub: 'AI/ML & Blockchain' },
-    { bg: 'linear-gradient(135deg,#2e0d1a,#091a30)', emoji: '🌐', label: 'WEBINARS', sub: 'Expert-Led Sessions' },
-    { bg: 'linear-gradient(135deg,#0d1a2e,#1a0d2e)', emoji: '🤝', label: 'NETWORKING', sub: 'Industry Connect' },
+  const placeholders = [
+    { label: 'Corsairs at Work', sub: 'Building in the dark hours' },
+    { label: 'The Armada Assembles', sub: 'Teams forging alliances' },
+    { label: 'The Prize Ceremony', sub: 'Claiming the treasure' },
+    { label: 'Mentors & Captains', sub: 'Guiding the fleet' },
+    { label: 'The Code Forge', sub: 'Where ideas become reality' },
+    { label: 'Victory at Dawn', sub: 'After 36 hours on the seas' },
   ]
 
   return (
     <section id="glimpses">
       <div className="glimpses-head">
-        <span className="s-label" style={{ display: 'block', textAlign: 'center', marginBottom: 16 }}>Past Memories</span>
-        <h2 className="s-title" style={{ textAlign: 'center', marginBottom: 0 }}>
-          Glimpses From{' '}
-          <span className="px">GRID Events</span>
+        <span className="s-label">⚔ From Past Voyages</span>
+        <h2 className="s-title">
+          Glimpses of <span className="hl">The Fleet</span>
         </h2>
+        <p className="s-desc">
+          Chronicles from previous expeditions — moments captured as corsairs of code
+          charted new waters and claimed their spoils.
+        </p>
       </div>
-      <div className="gallery-track">
-        {items.map((item, i) => (
-          <div key={i} className="gallery-item" style={{ background: item.bg }}>
-            <div style={{ textAlign: 'center', padding: 24 }}>
-              <div style={{ fontSize: 36, marginBottom: 12 }}>{item.emoji}</div>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: 'var(--teal)', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>{item.label}</div>
-              <div style={{ fontSize: 11, color: 'var(--text2)' }}>{item.sub}</div>
+      <div className="gallery-wrap">
+        <div className="gallery-track">
+          {placeholders.map((p, i) => (
+            <div className="gallery-item" key={i}>
+              <div className="gallery-placeholder">
+                <div style={{ fontSize: '28px', marginBottom: '12px', opacity: 0.4 }}>⚓</div>
+                <div style={{ fontFamily: 'var(--cinzel)', fontSize: '11px', letterSpacing: '1.5px', color: 'var(--text2)', marginBottom: '6px' }}>{p.label}</div>
+                <div style={{ fontSize: '11px', color: 'var(--text3)', letterSpacing: '1px' }}>{p.sub}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )

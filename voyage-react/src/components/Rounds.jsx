@@ -1,15 +1,48 @@
 import { useEffect, useRef } from 'react'
 
-function RoundCard({ active, children }) {
+const rounds = [
+  {
+    num: '01',
+    title: 'The Preliminary Skirmish',
+    desc: 'Submit your vessel\'s blueprint — a detailed plan of attack. The Admiralty reviews all scrolls and selects crews worthy of the main expedition.',
+    perks: ['Idea Submission Form', 'Problem Statement Alignment', 'Team Verification', 'Mentor Q&A Session'],
+  },
+  {
+    num: '02',
+    title: 'The 36-Hour Siege',
+    desc: 'The grand battle commences. Corsairs forge their solutions in real time — coding, designing, testing under the relentless tide of the 36-hour countdown.',
+    perks: ['Live Mentorship Rounds', 'Midnight Checkpoints', 'Resource Provisions', 'Progress Evaluations'],
+  },
+  {
+    num: '03',
+    title: 'Before the Grand Council',
+    desc: "The finest crews present their galleons before the Grand Council of judges. Five minutes to prove your worth — then the council deliberates and the treasure is awarded.",
+    perks: ['5-Min Demo Presentation', 'Technical Deep-Dive', 'Impact Assessment', 'Council Deliberation'],
+  },
+]
+
+function RoundCard({ round, delay }) {
   const ref = useRef(null)
   useEffect(() => {
     const el = ref.current; if (!el) return
+    el.style.setProperty('--delay', delay || '0s')
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect() }
     }, { threshold: 0.1 })
-    obs.observe(el); return () => obs.disconnect()
-  }, [])
-  return <div className={`round-card${active ? ' active' : ''}`} ref={ref}>{children}</div>
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [delay])
+
+  return (
+    <div className="round-card" ref={ref}>
+      <div className="round-num">{round.num}</div>
+      <div className="round-title">{round.title}</div>
+      <p className="round-desc">{round.desc}</p>
+      <ul className="round-perks">
+        {round.perks.map((p, i) => <li key={i}>{p}</li>)}
+      </ul>
+    </div>
+  )
 }
 
 export default function Rounds() {
@@ -17,45 +50,19 @@ export default function Rounds() {
     <section id="rounds">
       <div className="section-inner">
         <div className="rounds-head">
-          <span className="s-label">Structure</span>
+          <span className="s-label">⚔ Battle Rounds</span>
           <h2 className="s-title">
-            Round <span className="px">Details</span>
+            The <span className="hl">Armada's</span> Gauntlet
           </h2>
-          <p className="s-desc">Understand the phase requirements, eligibility criteria, and progression steps for Voyage.</p>
+          <p className="s-desc">
+            Three trials of fire and sea stand between a corsair and glory.
+            Only the boldest crews survive all three.
+          </p>
         </div>
         <div className="rounds-grid">
-          <RoundCard active>
-            <div className="round-tag">PHASE 01</div>
-            <div className="round-lock">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <div className="round-title">Round 1: Screening & Registration</div>
-            <p className="round-desc">Register your team and submit your idea proposal covering the problem statement, solution approach, and technology stack. Shortlisted teams will be notified via email to participate in the Grand Prototype Challenge.</p>
-            <a href="#register" className="btn-gold" style={{ display: 'inline-flex', marginTop: 8 }}>Register Now →</a>
-          </RoundCard>
-
-          <RoundCard>
-            <div className="round-tag">PHASE 02</div>
-            <div className="round-lock">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-              </svg>
-            </div>
-            <div className="round-title">Round 2: Hackathon Finale</div>
-            <div className="round-reveal">
-              <svg className="round-reveal-icon" viewBox="0 0 24 24" width="18" height="18">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
-              {' '}Details will be revealed soon<br />
-              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Stay tuned as the official challenge timelines and tasks are unlocked.</span>
-            </div>
-          </RoundCard>
+          {rounds.map((r, i) => (
+            <RoundCard key={i} round={r} delay={`${i * 0.12}s`} />
+          ))}
         </div>
       </div>
     </section>

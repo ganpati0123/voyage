@@ -1,51 +1,88 @@
 import { useState, useEffect, useRef } from 'react'
 
 const faqs = [
-  { q: 'Who can participate in Voyage 2026?', a: "The hackathon is open to all undergraduate and postgraduate students (1st Year – Final Year) from any college across India. You don't need prior hackathon experience — just a willingness to build." },
-  { q: 'Do I need a team, and how big should it be?', a: 'Teams must have 3–4 members. Individual or 2-member registrations are not accepted. Each team must nominate one Team Leader as the primary point of contact.' },
-  { q: 'Is there a registration fee?', a: 'Registration details including any fee information will be announced soon. Stay tuned to our official channels for updates.' },
-  { q: 'Is the hackathon online or in-person?', a: 'Voyage 2026 is an in-person hackathon. The venue will be announced soon. Participants must attend physically for the 36-hour sprint on 26–27 September 2026. Bring your own laptop, charger, and power backup.' },
-  { q: 'What should I bring to the Grand Finale?', a: 'Each participant must bring their own laptop, charger, and power backup. Wear your participant ID at all times inside the hackathon arena. Use only permitted resources and APIs in accordance with hackathon rules.' },
-  { q: 'Will there be mentors available?', a: 'Yes! Multiple mentorship sessions are scheduled throughout the hackathon. Industry experts and domain specialists will be available to guide your team, review your approach, and help you build better solutions.' },
-  { q: 'How will projects be judged?', a: 'Projects will be evaluated on Innovation & Creativity, Technical Complexity, Problem-Solution Fit, Scalability, and Presentation Quality. An eminent jury of Industry Leaders, Startup Founders, and domain experts will judge all finalists.' },
+  {
+    q: "Who may board the Voyage 2026 expedition?",
+    a: "The voyage is open to all undergraduate and postgraduate students (1st Year – Final Year) from any college across India. No prior hackathon experience required — only the courage to set sail.",
+  },
+  {
+    q: "How large must a crew be?",
+    a: "Crews of 2 to 4 corsairs are welcomed. Solo voyagers may seek alliance through our Community Docks during the registration period. Every corsair is stronger with a crew.",
+  },
+  {
+    q: "Is there a toll to board?",
+    a: "The expedition is entirely free of charge. No doubloons required to register. We believe great innovation should be accessible to every worthy corsair.",
+  },
+  {
+    q: "What provisions are offered during the voyage?",
+    a: "The Admiralty provides meals, refreshments, and essential provisions throughout the 36-hour journey. Crew members are also offered workspace, power stations, and high-speed winds (internet).",
+  },
+  {
+    q: "May we chart our course before the storm begins?",
+    a: "Yes — problem statements are revealed at the Opening Ceremony. However, general research, skill preparation, and strategy discussions beforehand are fully permitted and encouraged.",
+  },
+  {
+    q: "What manner of treasure may be claimed?",
+    a: "Beyond the gold (cash prizes), top crews receive internship opportunities with our partner empires, certification scrolls, mentorship from industry captains, and exclusive corsair swag.",
+  },
+  {
+    q: "How is the Grand Council judging our work?",
+    a: "The Council evaluates on innovation and originality, technical mastery, real-world impact potential, quality of the presentation, and whether the solution truly addresses the problem charter.",
+  },
+  {
+    q: "Where does the expedition take place?",
+    a: "Voyage 2026 is conducted in-person. The precise location and coordinates will be dispatched via the official communication channels once registration is confirmed.",
+  },
 ]
 
-function FAQItem({ q, a, open, onToggle }) {
+function FaqItem({ faq, delay }) {
+  const [open, setOpen] = useState(false)
   const ref = useRef(null)
+
   useEffect(() => {
     const el = ref.current; if (!el) return
+    el.style.setProperty('--delay', delay || '0s')
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect() }
-    }, { threshold: 0.1 })
-    obs.observe(el); return () => obs.disconnect()
-  }, [])
+    }, { threshold: 0.08 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [delay])
+
   return (
     <div className={`faq-item${open ? ' open' : ''}`} ref={ref}>
-      <button className="faq-q" onClick={onToggle}>
-        {q}
-        <svg className="faq-chevron" viewBox="0 0 24 24">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+      <button className="faq-q" onClick={() => setOpen(o => !o)}>
+        <span>{faq.q}</span>
+        <span className="faq-chevron">
+          <svg viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
       </button>
-      <div className="faq-a">{a}</div>
+      <div className="faq-a">
+        <div className="faq-a-inner">{faq.a}</div>
+      </div>
     </div>
   )
 }
 
 export default function FAQ() {
-  const [openIdx, setOpenIdx] = useState(0)
   return (
     <section id="faq">
       <div className="section-inner">
         <div className="faq-head">
-          <span className="s-label">Questions</span>
+          <span className="s-label">📜 The Captain's Scrolls</span>
           <h2 className="s-title">
-            Frequently <span className="px">Asked</span>
+            Frequently <span className="hl">Asked</span> of the Oracle
           </h2>
+          <p className="s-desc">
+            All that a corsair must know before they set sail. If your question
+            remains unanswered, hail the Quartermaster directly.
+          </p>
         </div>
         <div className="faq-list">
           {faqs.map((f, i) => (
-            <FAQItem key={i} q={f.q} a={f.a} open={openIdx === i} onToggle={() => setOpenIdx(openIdx === i ? -1 : i)} />
+            <FaqItem key={i} faq={f} delay={`${i * 0.06}s`} />
           ))}
         </div>
       </div>

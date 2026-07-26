@@ -1,25 +1,60 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+const links = [
+  { href: '#about', label: 'The Quest' },
+  { href: '#tracks', label: 'Routes' },
+  { href: '#timeline', label: 'Charts' },
+  { href: '#prizes', label: 'Plunder' },
+  { href: '#faq', label: 'Scrolls' },
+  { href: '#contact', label: 'Quartermaster' },
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   const close = () => setOpen(false)
 
   return (
-    <nav className="navbar">
-      <a href="#hero" className="nav-logo">VOYAGE <span>2026</span></a>
-      <ul className={`nav-links${open ? ' open' : ''}`}>
-        <li><a href="#about" onClick={close}>About</a></li>
-        <li><a href="#tracks" onClick={close}>Tracks</a></li>
-        <li><a href="#timeline" onClick={close}>Timeline</a></li>
-        <li><a href="#prizes" onClick={close}>Prizes</a></li>
-        <li><a href="#sponsors" onClick={close}>Sponsors</a></li>
-        <li><a href="#faq" onClick={close}>FAQ</a></li>
-        <li><a href="#contact" onClick={close}>Contact</a></li>
-      </ul>
-      <a href="#register" className="nav-btn">REGISTER NOW →</a>
-      <button className="hamburger" onClick={() => setOpen(o => !o)} aria-label="Menu">
-        <span /><span /><span />
-      </button>
-    </nav>
+    <>
+      <nav className="navbar">
+        <a href="#hero" className="nav-logo">
+          <span className="logo-anchor">⚓</span>
+          VOYAGE <span>2026</span>
+        </a>
+
+        <ul className="nav-links">
+          {links.map(l => (
+            <li key={l.href}><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+
+        <a href="#register" className="nav-btn">Set Sail</a>
+
+        <button
+          className={`hamburger${open ? ' open' : ''}`}
+          onClick={() => setOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+
+      {/* Mobile overlay menu */}
+      <div className={`mobile-menu${open ? ' open' : ''}`}>
+        {links.map(l => (
+          <a key={l.href} href={l.href} onClick={close}>{l.label}</a>
+        ))}
+        <a href="#register" className="mobile-menu-btn" onClick={close}>⚓ Set Sail</a>
+      </div>
+    </>
   )
 }
