@@ -23,18 +23,18 @@ const GridAbout: React.FC = () => {
 
   return (
     <section id="grid-about" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #000206 0%, #01060f 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div style={{
         position: 'absolute', bottom: 0, left: 0, width: 540, height: 540,
-        background: 'radial-gradient(circle, rgba(45,184,166,0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(31,157,140,0.04) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 68, textAlign: 'center' }}>
           <span className="section-label">The Brotherhood</span>
           <h2 style={{
@@ -50,7 +50,7 @@ const GridAbout: React.FC = () => {
           <div className="ornament" />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+        <div className="split-2-center">
           {/* Left — description */}
           <div style={{ animation: visible ? 'slideInLeft 0.9s ease forwards' : 'none' }}>
             <p style={{
@@ -94,10 +94,7 @@ const GridAbout: React.FC = () => {
           </div>
 
           {/* Right — stat grid */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22,
-            animation: visible ? 'slideInRight 0.9s ease forwards' : 'none',
-          }}>
+          <div className="grid-stats">
             {stats.map((s, i) => (
               <div key={i} className="glass-card" style={{
                 padding: '34px 26px',
@@ -137,12 +134,6 @@ const GridAbout: React.FC = () => {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 800px) {
-          #grid-about > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; gap: 48px !important; }
-          #grid-about > div:last-child > div:nth-child(2) > div:last-child { grid-template-columns: 1fr 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };

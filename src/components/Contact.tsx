@@ -81,14 +81,14 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #01060f 0%, #000206 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 68 }}>
           <span className="section-label">Parley with the Crew</span>
           <h2 style={{
@@ -113,25 +113,13 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 22,
-        }}>
+        <div className="grid-contact">
           {contacts.map((c, i) => (
             <ContactCard key={i} c={c} delay={i * 80} visible={visible} />
           ))}
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          #contact > div:last-child > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 500px) {
-          #contact > div:last-child > div:last-child { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };

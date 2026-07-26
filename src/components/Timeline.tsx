@@ -44,14 +44,14 @@ const Timeline: React.FC = () => {
 
   return (
     <section id="timeline" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #000206 0%, #01060f 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1040px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1040px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 72, textAlign: 'center' }}>
           <span className="section-label">Captain's Log</span>
           <h2 style={{
@@ -156,13 +156,8 @@ const Timeline: React.FC = () => {
 
       <style>{`
         @media (max-width: 700px) {
-          #timeline > div:last-child > div:nth-child(3) { left: 0 !important; transform: none !important; }
-          #timeline > div:last-child > div:nth-child(3) > div { left: 9px !important; }
-          #timeline > div:last-child > div[style*="justify-content"] {
-            justify-content: flex-start !important;
-            padding-right: 0 !important;
-            padding-left: 46px !important;
-          }
+          #timeline .timeline-row { justify-content: flex-start !important; padding-right: 0 !important; padding-left: 46px !important; }
+          #timeline .timeline-node { left: 9px !important; }
         }
       `}</style>
     </section>

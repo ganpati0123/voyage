@@ -30,12 +30,12 @@ const Guidelines: React.FC = () => {
 
   return (
     <section id="guidelines" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #040c1a 0%, #02060d 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #01060f 0%, #000206 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 68, textAlign: 'center' }}>
           <span className="section-label">The Captain's Code</span>
           <h2 style={{
@@ -51,7 +51,7 @@ const Guidelines: React.FC = () => {
           <div className="ornament" />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 44, alignItems: 'start' }}>
+        <div className="split-2">
           {/* Left — guidelines */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             {guidelines.map((g, i) => (
@@ -122,11 +122,6 @@ const Guidelines: React.FC = () => {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 800px) {
-          #guidelines > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };

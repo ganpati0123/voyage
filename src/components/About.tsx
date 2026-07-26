@@ -37,8 +37,8 @@ const About: React.FC = () => {
 
   return (
     <section id="about" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #000206 0%, #01060f 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
@@ -46,22 +46,22 @@ const About: React.FC = () => {
       <div style={{
         position: 'absolute', top: '12%', left: '4%',
         width: 480, height: 480,
-        background: 'radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(201,162,46,0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: '8%', right: '6%',
         width: 360, height: 360,
-        background: 'radial-gradient(circle, rgba(45,184,166,0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(31,157,140,0.04) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1240px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 72 }}>
           <span className="section-label">The Tale of Voyage</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 72, alignItems: 'start' }}>
+        <div className="split-2">
           {/* Left */}
           <div>
             <h2 style={{
@@ -129,9 +129,9 @@ const About: React.FC = () => {
           </div>
 
           {/* Right — stat cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
+          <div className="grid-stats">
             <StatCard icon={<Calendar size={22} color="var(--gold-6)" />} value={`${hours} Hrs`} label="The Relentless Tide" visible={visible} delay={0} />
-            <StatCard icon={<Users size={22} color="var(--gold-6)" />} value={`${members}+`} label="Soulsof the Fleet" visible={visible} delay={200} />
+            <StatCard icon={<Users size={22} color="var(--gold-6)" />} value={`${members}+`} label="Souls of the Fleet" visible={visible} delay={200} />
             <StatCard icon={<Trophy size={22} color="var(--gold-6)" />} value="₹25K" label="The Treasure Hoard" visible={visible} delay={400} />
             <StatCard icon={<MapPin size={22} color="var(--gold-6)" />} value="TBD" label="The Anchorage" visible={visible} delay={600} />
           </div>
@@ -157,12 +157,6 @@ const About: React.FC = () => {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          #about > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; gap: 56px !important; }
-          #about > div:last-child > div:nth-child(2) > div:last-child { grid-template-columns: 1fr 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };
@@ -193,13 +187,13 @@ const StatCard: React.FC<{
       <div style={{
         width: 52, height: 52,
         borderRadius: '14px',
-        background: 'rgba(212,175,55,0.12)',
-        border: '1px solid rgba(212,175,55,0.22)',
+        background: 'rgba(201,162,46,0.1)',
+        border: '1px solid rgba(201,162,46,0.22)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         marginBottom: 22,
         transition: 'all 0.35s ease',
         transform: hovered ? 'scale(1.12) rotate(-6deg)' : 'scale(1) rotate(0)',
-        boxShadow: hovered ? '0 0 22px rgba(212,175,55,0.3)' : 'none',
+        boxShadow: hovered ? '0 0 22px rgba(201,162,46,0.3)' : 'none',
       }}>{icon}</div>
       <div className="gold-text" style={{
         fontFamily: 'var(--font-pirate)',

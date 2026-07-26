@@ -128,19 +128,19 @@ const Register: React.FC = () => {
 
   return (
     <section id="register" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #040c1a 0%, #02060d 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #01060f 0%, #000206 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div style={{
         position: 'absolute', top: '12%', left: '4%',
         width: 540, height: 540,
-        background: 'radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(201,162,46,0.06) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '940px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '940px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 60 }}>
           <span className="section-label">The Enlistment Portal</span>
           <h2 style={{
@@ -256,7 +256,7 @@ const Register: React.FC = () => {
                     fontSize: '24px', color: 'var(--text-white)',
                     marginBottom: 30, textAlign: 'center',
                   }}>Name Yer Vessel</p>
-                  <div style={row(2)}>
+                  <div className="form-row-2">
                     <Field label="VESSEL NAME">
                       <Input placeholder="e.g. The Black Pearl" value={teamName} onChange={(e) => setTeamName(e.target.value)} />
                     </Field>
@@ -278,7 +278,7 @@ const Register: React.FC = () => {
                     fontSize: '24px', color: 'var(--text-white)',
                     marginBottom: 30, textAlign: 'center',
                   }}>The Captain's Seal</p>
-                  <div style={row(2)}>
+                  <div className="form-row-2">
                     <Field label="FULL NAME">
                       <Input placeholder="Captain's Name" value={leaderName} onChange={(e) => setLeaderName(e.target.value)} />
                     </Field>
@@ -286,7 +286,7 @@ const Register: React.FC = () => {
                       <Input type="email" placeholder="captain@example.com" value={leaderEmail} onChange={(e) => setLeaderEmail(e.target.value)} />
                     </Field>
                   </div>
-                  <div style={row(2)}>
+                  <div className="form-row-2">
                     <Field label="SIGNAL HORN (MOBILE)">
                       <Input placeholder="10-digit number" value={leaderMobile} onChange={(e) => setLeaderMobile(e.target.value)} />
                     </Field>
@@ -353,15 +353,15 @@ const Register: React.FC = () => {
                         fontSize: '15px',
                         marginBottom: 20, letterSpacing: '0.05em',
                       }}>CREW {idx + 1}</p>
-                      <div style={row(2)}>
-                        <Field label="FULL NAME">
+                  <div className="form-row-2">
+                    <Field label="FULL NAME">
                           <Input placeholder="Full Name" value={m.fullName} onChange={(e) => updateMember(idx, 'fullName', e.target.value)} />
                         </Field>
                         <Field label="RAVEN'S ADDRESS">
                           <Input type="email" placeholder="email@example.com" value={m.email} onChange={(e) => updateMember(idx, 'email', e.target.value)} />
                         </Field>
                       </div>
-                      <div style={row(2)}>
+                      <div className="form-row-2">
                         <Field label="ACADEMY / UNIVERSITY">
                           <Input placeholder="e.g. Haldia Institute of Technology" value={m.college} onChange={(e) => updateMember(idx, 'college', e.target.value)} />
                         </Field>
@@ -490,12 +490,6 @@ const Register: React.FC = () => {
         )}
       </div>
 
-      <style>{`
-        @media (max-width: 700px) {
-          #register form > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-          #register > div:last-child > div:last-child > div:nth-child(3) > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };

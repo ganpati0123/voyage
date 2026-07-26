@@ -53,19 +53,19 @@ const Prizes: React.FC = () => {
 
   return (
     <section id="prizes" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #040c1a 0%, #02060d 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #01060f 0%, #000206 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div style={{
         position: 'absolute', top: '6%', right: '4%',
         width: 640, height: 640,
-        background: 'radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(201,162,46,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 68, textAlign: 'center' }}>
           <span className="section-label">The Treasure Cove</span>
           <h2 style={{
@@ -93,13 +93,7 @@ const Prizes: React.FC = () => {
         </div>
 
         {/* Prize podium */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: 26,
-          marginBottom: 64,
-          alignItems: 'end',
-        }}>
+        <div className="grid-3" style={{ marginBottom: 64, alignItems: 'end' }}>
           {prizes.map((prize, i) => (
             <PrizeCard key={i} prize={prize} index={i} visible={visible} />
           ))}
@@ -114,7 +108,7 @@ const Prizes: React.FC = () => {
             textAlign: 'center', marginBottom: 40,
           }}>EVERY SOUL CLAIMS A SHARE</p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 26 }}>
+          <div className="grid-4">
             {perks.map((perk, i) => (
               <div key={i} style={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
@@ -151,13 +145,6 @@ const Prizes: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 800px) {
-          #prizes > div:last-child > div:nth-child(2) { grid-template-columns: 1fr !important; }
-          #prizes > div:last-child > div:last-child > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-      `}</style>
     </section>
   );
 };

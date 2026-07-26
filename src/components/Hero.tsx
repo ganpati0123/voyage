@@ -260,10 +260,10 @@ const Hero: React.FC = () => {
       position: 'relative',
       minHeight: '100vh',
       background:
-        'radial-gradient(ellipse at 18% 28%, rgba(10,31,60,0.72) 0%, transparent 58%),' +
-        'radial-gradient(ellipse at 82% 18%, rgba(13,37,67,0.52) 0%, transparent 50%),' +
-        'radial-gradient(ellipse at 50% 100%, rgba(45,184,166,0.08) 0%, transparent 60%),' +
-        'linear-gradient(180deg, #02060d 0%, #061226 55%, #0a1f3c 100%)',
+        'radial-gradient(ellipse at 18% 28%, rgba(5,16,31,0.72) 0%, transparent 55%),' +
+        'radial-gradient(ellipse at 82% 18%, rgba(8,22,40,0.42) 0%, transparent 48%),' +
+        'radial-gradient(ellipse at 50% 100%, rgba(31,157,140,0.05) 0%, transparent 58%),' +
+        'linear-gradient(180deg, #000206 0%, #020a16 55%, #04101f 100%)',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
@@ -271,48 +271,37 @@ const Hero: React.FC = () => {
       {/* Lightning flash overlay */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 4,
-        background: 'radial-gradient(ellipse at 70% 15%, rgba(244,208,111,0.4) 0%, transparent 45%)',
+        background: 'radial-gradient(ellipse at 70% 15%, rgba(240,207,94,0.35) 0%, transparent 45%)',
         animation: 'lightningFlash 11s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
 
       {/* Distant island parallax */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, transform: `translateY(${scrollY * 0.32}px)`, pointerEvents: 'none' }}>
-        <svg viewBox="0 0 1440 400" preserveAspectRatio="none" style={{ position: 'absolute', bottom: 200, width: '100%', height: 320, opacity: 0.32 }}>
-          <path d="M0,300 C200,250 300,200 450,230 C600,260 700,180 900,210 C1100,240 1200,200 1440,250 L1440,400 L0,400 Z" fill="rgba(6,18,38,0.85)" />
+        <svg viewBox="0 0 1440 400" preserveAspectRatio="none" style={{ position: 'absolute', bottom: 200, width: '100%', height: 320, opacity: 0.22 }}>
+          <path d="M0,300 C200,250 300,200 450,230 C600,260 700,180 900,210 C1100,240 1200,200 1440,250 L1440,400 L0,400 Z" fill="rgba(3,10,22,0.9)" />
         </svg>
       </div>
 
       {/* Moon & glow parallax */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, transform: `translateY(${scrollY * 0.16}px)`, pointerEvents: 'none' }}>
-        <div style={{ position: 'absolute', top: '7%', right: '11%', width: 240, height: 240, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,208,111,0.18) 0%, rgba(244,208,111,0.05) 40%, transparent 70%)', filter: 'blur(24px)' }} />
-        <div style={{ position: 'absolute', top: '9%', right: '14%', width: 90, height: 90, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%, rgba(255,233,168,0.7), rgba(212,175,55,0.22))', boxShadow: '0 0 70px rgba(244,208,111,0.35)' }} />
+        <div style={{ position: 'absolute', top: '7%', right: '11%', width: 240, height: 240, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,162,46,0.12) 0%, rgba(201,162,46,0.03) 40%, transparent 70%)', filter: 'blur(28px)' }} />
+        <div style={{ position: 'absolute', top: '9%', right: '14%', width: 90, height: 90, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%, rgba(255,233,168,0.5), rgba(201,162,46,0.12))', boxShadow: '0 0 70px rgba(201,162,46,0.22)' }} />
       </div>
 
+      <div className="caustics" style={{ zIndex: 1 }} />
       <ParticleField />
       <FogLayer />
 
       {/* Main content */}
-      <div style={{
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        maxWidth: '1240px',
-        margin: '0 auto',
-        width: '100%',
-        padding: '130px 48px 70px',
-        position: 'relative',
-        zIndex: 5,
-        gap: 44,
-      }}>
+      <div className="hero-main section-container" style={{ paddingTop: 130, paddingBottom: 70 }}>
         {/* Left */}
         <div style={{ flex: 1, maxWidth: 660 }}>
-          <div style={{
+          <div className="hero-badge" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '9px 20px',
-            background: 'rgba(212,175,55,0.09)',
-            border: '1px solid rgba(212,175,55,0.28)',
+            background: 'rgba(201,162,46,0.08)',
+            border: '1px solid rgba(201,162,46,0.28)',
             borderRadius: 100,
             marginBottom: 32,
             animation: 'fadeInUp 0.9s ease',
@@ -325,23 +314,23 @@ const Hero: React.FC = () => {
 
           <h1 ref={titleRef} style={{
             fontFamily: 'var(--font-pirate)',
-            fontSize: 'clamp(64px, 12vw, 160px)',
+            fontSize: 'clamp(56px, 11vw, 160px)',
             lineHeight: 0.86,
             marginBottom: 26,
             letterSpacing: '0.02em',
-            background: 'linear-gradient(180deg, #ffe9a8 0%, #f4d06f 30%, #d4af37 55%, #8a6f30 100%)',
+            background: 'linear-gradient(180deg, #ffe9a8 0%, #e0bb42 30%, #c9a22e 55%, #7a6228 100%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 100px rgba(212,175,55,0.32)',
+            textShadow: '0 0 100px rgba(201,162,46,0.3)',
           }}>
             VOYAGE
           </h1>
 
-          <div style={{ marginBottom: 30 }}>
+          <div className="hero-sub" style={{ marginBottom: 30 }}>
             <p style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(18px, 2.4vw, 26px)',
+              fontSize: 'clamp(17px, 2.4vw, 26px)',
               color: 'var(--text-bright)',
               lineHeight: 1.35,
               fontWeight: 700,
@@ -352,8 +341,8 @@ const Hero: React.FC = () => {
             </p>
             <p style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(18px, 2.4vw, 26px)',
-              color: 'rgba(212,175,55,0.85)',
+              fontSize: 'clamp(17px, 2.4vw, 26px)',
+              color: 'rgba(201,162,46,0.85)',
               lineHeight: 1.35,
               fontWeight: 400,
               letterSpacing: '0.06em',
@@ -363,22 +352,23 @@ const Hero: React.FC = () => {
             </p>
           </div>
 
-          <p style={{
+          <p className="hero-desc" style={{
             fontFamily: 'var(--font-body)',
             fontSize: '15px',
-            color: 'rgba(212,220,235,0.62)',
+            color: 'rgba(174,187,212,0.62)',
             lineHeight: 1.85,
             marginBottom: 44,
             maxWidth: 500,
-            borderLeft: '2px solid rgba(212,175,55,0.35)',
+            borderLeft: '2px solid rgba(201,162,46,0.35)',
             paddingLeft: 22,
+            margin: '0 0 44px',
           }}>
             Hoist the sails and chart a course through uncharted waters. Voyage beckons the boldest
             crews to forge legends across a relentless 36-hour tide — where ideas become treasure
             and innovators become captains of tomorrow.
           </p>
 
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+          <div className="hero-actions" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'flex-start' }}>
             <button className="btn-treasure" onClick={() => scrollTo('register')}>
               HOIST THE SAILS →
             </button>
@@ -389,7 +379,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Right — Ship + Compass */}
-        <div style={{
+        <div className="hero-art" style={{
           flexShrink: 0,
           display: 'flex',
           flexDirection: 'column',
@@ -405,7 +395,7 @@ const Hero: React.FC = () => {
               position: 'absolute', bottom: -44, left: '50%',
               transform: 'translateX(-50%)',
               width: '62%', height: 34,
-              background: 'radial-gradient(ellipse, rgba(212,175,55,0.12) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse, rgba(201,162,46,0.1) 0%, transparent 70%)',
               filter: 'blur(10px)',
             }} />
           </div>
@@ -417,51 +407,52 @@ const Hero: React.FC = () => {
       <div style={{
         position: 'relative',
         zIndex: 5,
-        borderTop: '1px solid rgba(212,175,55,0.18)',
-        background: 'rgba(2,6,13,0.65)',
+        borderTop: '1px solid rgba(201,162,46,0.16)',
+        background: 'rgba(0,4,10,0.78)',
         backdropFilter: 'blur(22px)',
         padding: '34px 48px',
         maxWidth: '1240px',
         margin: '0 auto',
         width: '100%',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 24,
       }}>
-        {[
-          { label: 'THE TIDE', value: '36 HRS' },
-          { label: 'CREW SIZE', value: '3 – 4' },
-          { label: 'TREASURE', value: '₹25,000' },
-          { label: 'SET SAIL', value: '26 | 27 SEP' },
-        ].map((s, i) => (
-          <div key={i} style={{ textAlign: 'center', position: 'relative' }}>
-            <div className="gold-text" style={{
-              fontFamily: 'var(--font-pirate)',
-              fontSize: 'clamp(24px, 3.2vw, 40px)',
-              marginBottom: 7,
-              lineHeight: 1,
-            }}>{s.value}</div>
-            <div style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '9px',
-              letterSpacing: '0.28em',
-              color: 'rgba(141,165,196,0.7)',
-              textTransform: 'uppercase',
-            }}>{s.label}</div>
-            {i < 3 && <div style={{ position: 'absolute', right: -12, top: '18%', height: '64%', width: 1, background: 'rgba(212,175,55,0.18)' }} />}
-          </div>
-        ))}
+        <div className="hero-stats">
+          {[
+            { label: 'THE TIDE', value: '36 HRS' },
+            { label: 'CREW SIZE', value: '3 – 4' },
+            { label: 'TREASURE', value: '₹25,000' },
+            { label: 'SET SAIL', value: '26 | 27 SEP' },
+          ].map((s, i) => (
+            <div key={i} className="hero-stat" style={{ textAlign: 'center', position: 'relative' }}>
+              <div className="gold-text" style={{
+                fontFamily: 'var(--font-pirate)',
+                fontSize: 'clamp(22px, 3.2vw, 40px)',
+                marginBottom: 7,
+                lineHeight: 1,
+              }}>{s.value}</div>
+              <div style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '9px',
+                letterSpacing: '0.28em',
+                color: 'rgba(106,124,154,0.7)',
+                textTransform: 'uppercase',
+              }}>{s.label}</div>
+              <div className="hero-stat-divider" style={{ position: 'absolute', right: -12, top: '18%', height: '64%', width: 1, background: 'rgba(201,162,46,0.18)' }} />
+            </div>
+          ))}
+        </div>
       </div>
 
       <OceanWaves />
 
       <style>{`
-        @media (max-width: 900px) {
-          #home > div:nth-of-type(4) { flex-direction: column !important; text-align: center !important; padding-top: 110px !important; }
-          #home > div:nth-of-type(4) > div:first-child { max-width: 100% !important; }
-          #home > div:nth-of-type(4) > div:first-child p[style*="borderLeft"] { borderLeft: none !important; paddingLeft: 0 !important; }
-          #home > div:nth-of-type(4) > div:last-child { margin-top: 24px; }
-          #home > div:nth-of-type(5) { grid-template-columns: repeat(2, 1fr) !important; gap: 22px !important; }
+        @media (max-width: 768px) {
+          .hero-badge { margin: 0 auto 24px !important; }
+          .hero-desc { borderLeft: none !important; paddingLeft: 0 !important; margin: '0 auto 36px' !important; max-width: 100% !important; }
+          .hero-actions { justify-content: center !important; }
+          .hero-stat-divider { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-main { padding-top: 110px !important; padding-bottom: 50px !important; }
         }
       `}</style>
     </section>

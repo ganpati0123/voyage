@@ -42,14 +42,14 @@ const Sponsors: React.FC = () => {
 
   return (
     <section id="sponsors" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #02060d 0%, #040c1a 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #000206 0%, #01060f 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 68, textAlign: 'center' }}>
           <span className="section-label">The Brotherhood of Allies</span>
           <h2 style={{
@@ -93,11 +93,8 @@ const SponsorCard: React.FC<{ sponsor: typeof sponsors[0]; index: number; visibl
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="glass-card"
+      className="glass-card sponsor-card"
       style={{
-        display: 'grid',
-        gridTemplateColumns: '340px 1fr',
-        gap: 0,
         transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
         boxShadow: hovered ? `0 24px 56px rgba(0,0,0,0.5), 0 0 0 1px ${sponsor.glow}` : 'none',
@@ -159,12 +156,6 @@ const SponsorCard: React.FC<{ sponsor: typeof sponsors[0]; index: number; visibl
           lineHeight: 1.9,
         }}>{sponsor.description}</p>
       </div>
-
-      <style>{`
-        @media (max-width: 700px) {
-          .glass-card[style*="340px"] { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 };

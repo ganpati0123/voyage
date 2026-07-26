@@ -77,13 +77,8 @@ const Footer: React.FC = () => {
         <path d="M0,36 C360,56 720,16 1080,36 C1260,46 1380,26 1440,36 L1440,0 L0,0 Z" fill="rgba(212,175,55,0.04)" />
       </svg>
 
-      <div style={{
-        maxWidth: 1140,
-        margin: '0 auto',
+      <div className="section-container footer-grid" style={{
         padding: '84px 48px 52px',
-        display: 'grid',
-        gridTemplateColumns: '2fr 1fr 1fr',
-        gap: '52px 68px',
         position: 'relative', zIndex: 1,
       }}>
         {/* Brand */}
@@ -178,11 +173,11 @@ const Footer: React.FC = () => {
 
       <style>{`
         @media (max-width: 800px) {
-          footer > div:first-of-type { grid-template-columns: 1fr 1fr !important; }
-          footer > div:first-of-type > div:first-child { grid-column: 1 / -1; }
+          .footer-grid { grid-template-columns: 1fr 1fr !important; }
+          .footer-grid > div:first-child { grid-column: 1 / -1; }
         }
         @media (max-width: 500px) {
-          footer > div:first-of-type { grid-template-columns: 1fr !important; padding: 52px 26px 36px !important; }
+          .footer-grid { grid-template-columns: 1fr !important; padding: 52px 26px 36px !important; }
         }
       `}</style>
     </footer>

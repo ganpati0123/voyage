@@ -85,18 +85,18 @@ const Tracks: React.FC = () => {
 
   return (
     <section id="tracks" ref={sectionRef} className="noise-texture" style={{
-      background: 'linear-gradient(180deg, #040c1a 0%, #02060d 100%)',
-      padding: '130px 48px',
+      background: 'linear-gradient(180deg, #01060f 0%, #000206 100%)',
+      padding: '130px 0',
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div style={{
         position: 'absolute', top: '6%', left: '0', width: 560, height: 560,
-        background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(201,162,46,0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1240px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 72, textAlign: 'center' }}>
           <span className="section-label">The Waters Ye Shall Sail</span>
           <h2 style={{
@@ -123,21 +123,12 @@ const Tracks: React.FC = () => {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
+        <div className="grid-3">
           {tracks.map((track, i) => (
             <TrackCard key={track.id} track={track} index={i} visible={visible} />
           ))}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          #tracks > div:last-child > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 600px) {
-          #tracks > div:last-child > div:last-child { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 };
