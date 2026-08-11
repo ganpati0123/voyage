@@ -25,18 +25,15 @@ const SketchfabBackground: React.FC = () => (
         height: '140%',
         transform: 'translate(-50%, -50%)',
         border: 'none',
-        opacity: 0.5,
-        filter: 'brightness(0.55) contrast(1.15) saturate(1.3)',
+        opacity: 1,
       }}
     />
-    {/* Blend overlay — merges 3D scene with the ocean-night theme */}
+    {/* Subtle edge vignette — only darkens far edges for text legibility */}
     <div style={{
       position: 'absolute',
       inset: 0,
       background:
-        'radial-gradient(ellipse at 18% 28%, rgba(5,16,31,0.45) 0%, transparent 55%),' +
-        'radial-gradient(ellipse at 82% 18%, rgba(8,22,40,0.3) 0%, transparent 48%),' +
-        'linear-gradient(180deg, rgba(0,2,6,0.5) 0%, rgba(2,10,22,0.55) 55%, rgba(4,16,31,0.7) 100%)',
+        'radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.35) 100%)',
       pointerEvents: 'none',
     }} />
   </div>
@@ -192,16 +189,8 @@ const Hero: React.FC = () => {
       flexDirection: 'column',
       overflow: 'hidden',
     }}>
-      {/* 3D Sketchfab background — auto-starts & auto-rotates */}
+      {/* 3D Sketchfab background — auto-starts & auto-rotates, fully visible */}
       <SketchfabBackground />
-
-      {/* Lightning flash overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 4,
-        background: 'radial-gradient(ellipse at 70% 15%, rgba(240,207,94,0.2) 0%, transparent 45%)',
-        animation: 'lightningFlash 11s ease-in-out infinite',
-        pointerEvents: 'none',
-      }} />
 
       {/* Main content */}
       <div className="hero-main section-container" style={{ paddingTop: 130, paddingBottom: 70 }}>
