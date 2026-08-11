@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import SketchfabEmbed from './SketchfabEmbed'
 
 const rounds = [
   {
@@ -49,20 +50,25 @@ export default function Rounds() {
   return (
     <section id="rounds" className="scene rules-flag">
       <div className="section-inner">
-        <div className="rounds-head">
-          <span className="s-label">🏴 Rules of Voyage</span>
-          <h2 className="s-title">
-            The <span className="hl">Voyage</span> Rules
-          </h2>
-          <p className="s-desc">
-            Three trials of fire and sea stand between a corsair and glory.
-            Only the boldest crews survive all three.
-          </p>
-        </div>
-        <div className="rounds-grid">
-          {rounds.map((r, i) => (
-            <RoundCard key={i} round={r} delay={`${i * 0.12}s`} />
-          ))}
+        <div className="voyage-model-layout">
+          <div className="voyage-model-content">
+            <div className="rounds-head">
+              <span className="s-label">🏴 Rules of Voyage</span>
+              <h2 className="s-title">
+                The <span className="hl">Voyage</span> Rules
+              </h2>
+              <p className="s-desc">
+                Three trials of fire and sea stand between a corsair and glory.
+                Only the boldest crews survive all three.
+              </p>
+            </div>
+            <div className="rounds-grid">
+              {rounds.map((r, i) => (
+                <RoundCard key={i} round={r} delay={`${i * 0.12}s`} />
+              ))}
+            </div>
+          </div>
+          <SketchfabEmbed model="pirateFlag" />
         </div>
       </div>
     </section>

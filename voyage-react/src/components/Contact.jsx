@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import SketchfabEmbed from './SketchfabEmbed'
 
 function ContactCard({ name, role, phone, delay }) {
   const ref = useRef(null)
@@ -31,30 +32,35 @@ export default function Contact() {
   return (
     <section id="contact" className="scene raven-home">
       <div className="section-inner">
-        <div className="contact-head">
-          <span className="s-label">✉ Send a Raven</span>
-          <h2 className="s-title">
-            Send a <span className="pw">Raven</span>
-          </h2>
-        </div>
-        <div className="contact-divider" />
-        <p className="contact-sub">
-          Questions about the expedition? Doubts about your vessel's readiness?
-          The Quartermasters stand watch. Send your signal and they shall respond.
-        </p>
-        <div className="contact-grid">
-          <ContactCard
-            name="Ganpati Raj"
-            role="Organizing Corsair, GRID Community"
-            phone="+91 9507542854"
-            delay="0s"
-          />
-          <ContactCard
-            name="Krishna Raj Barnwal"
-            role="Organizing Corsair, GRID Community"
-            phone="+91 7362994375"
-            delay="0.12s"
-          />
+        <div className="voyage-model-layout">
+          <div className="voyage-model-content">
+            <div className="contact-head">
+              <span className="s-label">✉ Send a Raven</span>
+              <h2 className="s-title">
+                Send a <span className="pw">Raven</span>
+              </h2>
+            </div>
+            <div className="contact-divider" />
+            <p className="contact-sub">
+              Questions about the expedition? Doubts about your vessel's readiness?
+              The Quartermasters stand watch. Send your signal and they shall respond.
+            </p>
+            <div className="contact-grid">
+              <ContactCard
+                name="Ganpati Raj"
+                role="Organizing Corsair, GRID Community"
+                phone="+91 9507542854"
+                delay="0s"
+              />
+              <ContactCard
+                name="Krishna Raj Barnwal"
+                role="Organizing Corsair, GRID Community"
+                phone="+91 7362994375"
+                delay="0.12s"
+              />
+            </div>
+          </div>
+          <SketchfabEmbed model="mobileHome" />
         </div>
       </div>
     </section>

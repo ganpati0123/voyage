@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import SketchfabEmbed from './SketchfabEmbed'
 
 const podium = [
   {
@@ -62,29 +63,34 @@ export default function Prizes() {
   return (
     <section id="prizes" className="scene forest-diorama">
       <div className="section-inner">
-        <div className="prizes-head">
-          <span className="s-label">🌲 Bounty &amp; Beauty</span>
-          <h2 className="s-title">
-            Claim Your <span className="hl">Bounty</span>
-          </h2>
-          <p className="s-desc">
-            The greatest corsairs sail not merely for glory — but for the riches
-            that await the bold at the end of the voyage.
-          </p>
-        </div>
-
-        <div className="prizes-podium">
-          {podium.map((p, i) => <PrizeCard key={i} p={p} />)}
-        </div>
-
-        <div className="prize-breakdown">
-          {perks.map((p, i) => (
-            <div className="perk-card" key={i}>
-              <div className="perk-icon">{p.icon}</div>
-              <div className="perk-title">{p.title}</div>
-              <div className="perk-val">{p.val}</div>
+        <div className="voyage-model-layout">
+          <div className="voyage-model-content">
+            <div className="prizes-head">
+              <span className="s-label">🌲 Bounty &amp; Beauty</span>
+              <h2 className="s-title">
+                Claim Your <span className="hl">Bounty</span>
+              </h2>
+              <p className="s-desc">
+                The greatest corsairs sail not merely for glory — but for the riches
+                that await the bold at the end of the voyage.
+              </p>
             </div>
-          ))}
+
+            <div className="prizes-podium">
+              {podium.map((p, i) => <PrizeCard key={i} p={p} />)}
+            </div>
+
+            <div className="prize-breakdown">
+              {perks.map((p, i) => (
+                <div className="perk-card" key={i}>
+                  <div className="perk-icon">{p.icon}</div>
+                  <div className="perk-title">{p.title}</div>
+                  <div className="perk-val">{p.val}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <SketchfabEmbed model="forestLoner" />
         </div>
       </div>
     </section>

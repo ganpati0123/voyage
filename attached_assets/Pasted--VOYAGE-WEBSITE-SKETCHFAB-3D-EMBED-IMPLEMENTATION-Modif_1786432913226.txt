@@ -1,0 +1,396 @@
+# VOYAGE WEBSITE — SKETCHFAB 3D EMBED IMPLEMENTATION
+
+Modify the existing Voyage website carefully.
+
+**IMPORTANT: Do NOT use the local GLB files for these sections.**
+
+Instead, use the **exact Sketchfab iframe embeds provided below**.
+
+Do not create fake 3D effects, CSS replacements, placeholder models, or static images.
+
+Do not perform a broad redesign.
+
+Do not remove or break existing website functionality.
+
+---
+
+# 1. SKETCHFAB → SECTION MAPPING
+
+## CHOOSE WHY VOYAGE
+
+Use this exact Sketchfab model:
+
+**Cursed Gold — Pirate Tale**
+
+Sketchfab embed URL:
+
+```text
+https://sketchfab.com/models/b1e28eeec0fd48799155c24ab0e07a56/embed
+```
+
+Use an iframe with:
+
+```html
+<iframe
+  title="👑 Cursed Gold 💀 || Pirate tale"
+  frameborder="0"
+  allowfullscreen
+  mozallowfullscreen="true"
+  webkitallowfullscreen="true"
+  allow="autoplay; fullscreen; xr-spatial-tracking"
+  xr-spatial-tracking
+  execution-while-out-of-viewport
+  execution-while-not-rendered
+  web-share
+  src="https://sketchfab.com/models/b1e28eeec0fd48799155c24ab0e07a56/embed">
+</iframe>
+```
+
+Place this model in the **Choose Why Voyage** section.
+
+---
+
+# 2. BOUNTY & BEAUTY
+
+Use this exact Sketchfab model:
+
+**DAE Diorama — Forest Loner**
+
+Sketchfab embed URL:
+
+```text
+https://sketchfab.com/models/2c5593e43ce84fec9cb0e70e3b06fa19/embed
+```
+
+Use:
+
+```html
+<iframe
+  title="DAE Diorama - Forest Loner"
+  frameborder="0"
+  allowfullscreen
+  mozallowfullscreen="true"
+  webkitallowfullscreen="true"
+  allow="autoplay; fullscreen; xr-spatial-tracking"
+  xr-spatial-tracking
+  execution-while-out-of-viewport
+  execution-while-not-rendered
+  web-share
+  src="https://sketchfab.com/models/2c5593e43ce84fec9cb0e70e3b06fa19/embed">
+</iframe>
+```
+
+Place this model in the **Bounty & Beauty** section.
+
+---
+
+# 3. RULES OF VOYAGE
+
+Use this exact Sketchfab model:
+
+**Pirate Flag animated**
+
+Sketchfab embed URL:
+
+```text
+https://sketchfab.com/models/e6b2c8a5be864ad6afba3bdfdde1aff2/embed
+```
+
+Use:
+
+```html
+<iframe
+  title="Pirate Flag animated"
+  frameborder="0"
+  allowfullscreen
+  mozallowfullscreen="true"
+  webkitallowfullscreen="true"
+  allow="autoplay; fullscreen; xr-spatial-tracking"
+  xr-spatial-tracking
+  execution-while-out-of-viewport
+  execution-while-not-rendered
+  web-share
+  src="https://sketchfab.com/models/e6b2c8a5be864ad6afba3bdfdde1aff2/embed">
+</iframe>
+```
+
+Place this model in the **Rules of Voyage** section.
+
+---
+
+# 4. SEND A RAVEN
+
+Use this exact Sketchfab model:
+
+**Mobile Home**
+
+Sketchfab embed URL:
+
+```text
+https://sketchfab.com/models/5240b1dbc29c4ea28be7f91b3638951a/embed
+```
+
+Use:
+
+```html
+<iframe
+  title="Mobile Home"
+  frameborder="0"
+  allowfullscreen
+  mozallowfullscreen="true"
+  webkitallowfullscreen="true"
+  allow="autoplay; fullscreen; xr-spatial-tracking"
+  xr-spatial-tracking
+  execution-while-out-of-viewport
+  execution-while-not-rendered
+  web-share
+  src="https://sketchfab.com/models/5240b1dbc29c4ea28be7f91b3638951a/embed">
+</iframe>
+```
+
+Place this model in the **Send a Raven** section.
+
+---
+
+# 5. CONTINUOUS ANIMATION — VERY IMPORTANT
+
+All four Sketchfab models must remain **animated continuously**.
+
+Do NOT display them as static previews.
+
+The Sketchfab iframe must be configured so that:
+
+* Autoplay is enabled wherever supported.
+* The model's native Sketchfab animation plays automatically.
+* The animation continues looping continuously.
+* No user click should be required to start the animation.
+* The animation should remain active while the user is viewing that section.
+* Do not replace the animated model with CSS animation.
+* Do not replace it with a screenshot or static image.
+
+Keep the existing iframe permissions:
+
+```text
+allow="autoplay; fullscreen; xr-spatial-tracking"
+```
+
+and:
+
+```text
+execution-while-out-of-viewport
+execution-while-not-rendered
+```
+
+If Sketchfab supports the model's animation natively, allow Sketchfab to control and loop the animation.
+
+---
+
+# 6. EACH SECTION MUST HAVE A DIFFERENT MODEL
+
+Do NOT create one global Sketchfab iframe.
+
+Each section must have its own separate Sketchfab embed.
+
+Mapping must remain exactly:
+
+```text
+Choose Why Voyage
+        ↓
+Cursed Gold — Pirate Tale
+
+Bounty & Beauty
+        ↓
+DAE Diorama — Forest Loner
+
+Rules of Voyage
+        ↓
+Pirate Flag animated
+
+Send a Raven
+        ↓
+Mobile Home
+```
+
+A model must never appear in another section.
+
+---
+
+# 7. FRONT / FOREGROUND PLACEMENT
+
+The Sketchfab model must be a **prominent FRONT / FOREGROUND visual element** inside its assigned section.
+
+Layering:
+
+```text
+BACK
+↓
+Existing section background / atmosphere
+
+MIDDLE
+↓
+Existing text / headings / buttons
+
+FRONT
+↓
+Sketchfab 3D model
+```
+
+Do NOT make the Sketchfab iframe the section's background.
+
+Do NOT hide it behind the content.
+
+Do NOT make it tiny.
+
+Make it visually prominent while keeping text and buttons readable.
+
+---
+
+# 8. DESKTOP
+
+Prefer a layout like:
+
+```text
+┌──────────────────────────────────────────┐
+│                                          │
+│  Existing Content       SKETCHFAB 3D     │
+│  Heading                MODEL            │
+│  Description                             │
+│  Buttons                                  │
+│                                          │
+└──────────────────────────────────────────┘
+```
+
+Keep the existing website design intact.
+
+Do not redesign the entire section.
+
+---
+
+# 9. MOBILE
+
+On mobile:
+
+```text
+Existing section content
+        ↓
+Sketchfab 3D model
+        ↓
+Next section
+```
+
+Center the model and make it responsive.
+
+Ensure:
+
+* No horizontal scrolling
+* No iframe overflow
+* No text overlap
+* No button overlap
+* No broken layout
+* Model remains clearly visible
+
+---
+
+# 10. SECTION BEHAVIOR
+
+Each Sketchfab embed should remain associated ONLY with its own section.
+
+When the user reaches a section:
+
+```text
+Section enters viewport
+        ↓
+Sketchfab model visible
+        ↓
+Animation plays automatically
+        ↓
+Animation continues/loops
+```
+
+When the user leaves the section, do not allow the model from that section to visually appear in another section.
+
+Do not implement a single model that changes between sections.
+
+---
+
+# 11. REMOVE THE PREVIOUS GLB IMPLEMENTATION FOR THESE SECTIONS
+
+The previous local GLB implementation for these four sections should NOT be used.
+
+Replace the visual model layer with the corresponding Sketchfab iframe embeds above.
+
+Do not delete the actual local GLB files from the repository unless they are completely unused elsewhere.
+
+Only replace their usage in these four website sections.
+
+---
+
+# 12. DO NOT CHANGE UNRELATED THINGS
+
+Do NOT:
+
+* Redesign the entire website
+* Remove navigation
+* Remove existing sections
+* Remove existing text
+* Remove existing buttons
+* Remove forms
+* Change unrelated components
+* Modify deployment configuration
+* Modify Vercel configuration
+* Fix unrelated npm errors
+* Replace Sketchfab models with CSS
+* Replace models with screenshots
+* Use placeholder models
+
+Only implement the four specified Sketchfab embeds and their section-specific animation/display behavior.
+
+---
+
+# 13. FINAL VERIFICATION
+
+Verify:
+
+```text
+[ ] Choose Why Voyage
+    → Cursed Gold Sketchfab model
+    → Correct embed URL
+    → FRONT/FOREGROUND
+    → Animation playing
+
+[ ] Bounty & Beauty
+    → Forest Diorama Sketchfab model
+    → Correct embed URL
+    → FRONT/FOREGROUND
+    → Animation playing
+
+[ ] Rules of Voyage
+    → Pirate Flag Sketchfab model
+    → Correct embed URL
+    → FRONT/FOREGROUND
+    → Animation playing
+
+[ ] Send a Raven
+    → Mobile Home Sketchfab model
+    → Correct embed URL
+    → FRONT/FOREGROUND
+    → Animation playing
+```
+
+Also verify:
+
+```text
+[ ] All four are different Sketchfab models
+[ ] All four use the exact provided embed URLs
+[ ] All four autoplay where supported
+[ ] All four continuously animate/loop where the Sketchfab model supports animation
+[ ] Each model stays in its assigned section
+[ ] Models are foreground visuals, not backgrounds
+[ ] Desktop works
+[ ] Mobile works
+[ ] No horizontal overflow
+[ ] Existing website content remains intact
+[ ] Existing interactions remain intact
+```
+
+**Do not report completion until all four actual Sketchfab embeds are visible in their correct sections and their native animations are playing.**
