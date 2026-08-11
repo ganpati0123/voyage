@@ -1,104 +1,46 @@
 import { useEffect, useRef, useState } from 'react';
 
 /* ═══════════════════════════════════════════════════════════
-   STARFIELD + EMBER CANVAS — drifting stars & rising embers
+   SKETCHFAB 3D BACKGROUND — auto-start, auto-rotate, full cover
    ═══════════════════════════════════════════════════════════ */
-const ParticleField: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let raf = 0;
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const stars = Array.from({ length: 160 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.6 + 0.3,
-      a: Math.random() * 0.7 + 0.2,
-      tw: Math.random() * 0.012 + 0.003,
-      dir: Math.random() > 0.5 ? 1 : -1,
-    }));
-
-    const embers = Array.from({ length: 32 }, () => ({
-      x: Math.random() * canvas.width,
-      y: canvas.height + Math.random() * 240,
-      r: Math.random() * 2.2 + 0.6,
-      vy: -(Math.random() * 0.6 + 0.25),
-      vx: (Math.random() - 0.5) * 0.4,
-      a: 0,
-      life: Math.random() * 340 + 220,
-      age: 0,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      stars.forEach((s) => {
-        s.a += s.tw * s.dir;
-        if (s.a > 0.95 || s.a < 0.1) s.dir *= -1;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(244,208,111,${s.a})`;
-        ctx.fill();
-      });
-
-      embers.forEach((e) => {
-        e.age++;
-        e.y += e.vy;
-        e.x += e.vx;
-        e.vx += (Math.random() - 0.5) * 0.06;
-        const lr = e.age / e.life;
-        e.a = lr < 0.1 ? lr * 10 : lr > 0.8 ? (1 - lr) * 5 : 1;
-        if (e.age >= e.life || e.y < -30) {
-          e.x = Math.random() * canvas.width;
-          e.y = canvas.height + 20;
-          e.age = 0;
-          e.vy = -(Math.random() * 0.6 + 0.25);
-        }
-        const grad = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r * 4);
-        grad.addColorStop(0, `rgba(255,170,80,${e.a * 0.85})`);
-        grad.addColorStop(0.5, `rgba(212,175,55,${e.a * 0.32})`);
-        grad.addColorStop(1, 'transparent');
-        ctx.beginPath();
-        ctx.arc(e.x, e.y, e.r * 4, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      });
-
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
+const SketchfabBackground: React.FC = () => (
+  <div style={{
+    position: 'absolute',
+    inset: 0,
+    zIndex: 0,
+    overflow: 'hidden',
+    pointerEvents: 'none',
+  }}>
+    <iframe
+      src="https://sketchfab.com/models/af0faf58a0e748e0ad4dfc444625f147/embed?autostart=1&autospin=0.5&ui_controls=0&ui_infos=0&ui_watermark=0&ui_settings=0&ui_annotations=0&ui_hint=0&ui_inspector=0&ui_stop=0&ui_help=0&ui_vr=0&ui_loading=0"
+      frameBorder={0}
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      allowFullScreen
+      title="Voyage 3D Scene"
       style={{
         position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 2,
+        top: '50%',
+        left: '50%',
+        width: '140%',
+        height: '140%',
+        transform: 'translate(-50%, -50%)',
+        border: 'none',
+        opacity: 0.5,
+        filter: 'brightness(0.55) contrast(1.15) saturate(1.3)',
       }}
     />
-  );
-};
+    {/* Blend overlay — merges 3D scene with the ocean-night theme */}
+    <div style={{
+      position: 'absolute',
+      inset: 0,
+      background:
+        'radial-gradient(ellipse at 18% 28%, rgba(5,16,31,0.45) 0%, transparent 55%),' +
+        'radial-gradient(ellipse at 82% 18%, rgba(8,22,40,0.3) 0%, transparent 48%),' +
+        'linear-gradient(180deg, rgba(0,2,6,0.5) 0%, rgba(2,10,22,0.55) 55%, rgba(4,16,31,0.7) 100%)',
+      pointerEvents: 'none',
+    }} />
+  </div>
+);
 
 /* ═══════════════════════════════════════════════════════════
    OCEAN WAVES — three layered animated swells
@@ -212,20 +154,6 @@ const Compass: React.FC = () => (
 );
 
 /* ═══════════════════════════════════════════════════════════
-   FOG — drifting volumetric haze
-   ═══════════════════════════════════════════════════════════ */
-const FogLayer: React.FC = () => (
-  <>
-    <div style={{ position: 'absolute', top: '22%', left: 0, width: '100%', height: 220, zIndex: 3, pointerEvents: 'none', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', width: '62%', height: '100%', background: 'radial-gradient(ellipse, rgba(141,165,196,0.09) 0%, transparent 70%)', animation: 'fogDrift 28s ease-in-out infinite' }} />
-    </div>
-    <div style={{ position: 'absolute', top: '52%', left: 0, width: '100%', height: 280, zIndex: 3, pointerEvents: 'none', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', width: '52%', height: '100%', background: 'radial-gradient(ellipse, rgba(141,165,196,0.06) 0%, transparent 70%)', animation: 'fogDrift 38s ease-in-out infinite reverse', animationDelay: '6s' }} />
-    </div>
-  </>
-);
-
-/* ═══════════════════════════════════════════════════════════
    HERO
    ═══════════════════════════════════════════════════════════ */
 const Hero: React.FC = () => {
@@ -259,39 +187,21 @@ const Hero: React.FC = () => {
     <section id="home" style={{
       position: 'relative',
       minHeight: '100vh',
-      background:
-        'radial-gradient(ellipse at 18% 28%, rgba(5,16,31,0.72) 0%, transparent 55%),' +
-        'radial-gradient(ellipse at 82% 18%, rgba(8,22,40,0.42) 0%, transparent 48%),' +
-        'radial-gradient(ellipse at 50% 100%, rgba(31,157,140,0.05) 0%, transparent 58%),' +
-        'linear-gradient(180deg, #000206 0%, #020a16 55%, #04101f 100%)',
+      background: '#000206',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
     }}>
+      {/* 3D Sketchfab background — auto-starts & auto-rotates */}
+      <SketchfabBackground />
+
       {/* Lightning flash overlay */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 4,
-        background: 'radial-gradient(ellipse at 70% 15%, rgba(240,207,94,0.35) 0%, transparent 45%)',
+        background: 'radial-gradient(ellipse at 70% 15%, rgba(240,207,94,0.2) 0%, transparent 45%)',
         animation: 'lightningFlash 11s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
-
-      {/* Distant island parallax */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 0, transform: `translateY(${scrollY * 0.32}px)`, pointerEvents: 'none' }}>
-        <svg viewBox="0 0 1440 400" preserveAspectRatio="none" style={{ position: 'absolute', bottom: 200, width: '100%', height: 320, opacity: 0.22 }}>
-          <path d="M0,300 C200,250 300,200 450,230 C600,260 700,180 900,210 C1100,240 1200,200 1440,250 L1440,400 L0,400 Z" fill="rgba(3,10,22,0.9)" />
-        </svg>
-      </div>
-
-      {/* Moon & glow parallax */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, transform: `translateY(${scrollY * 0.16}px)`, pointerEvents: 'none' }}>
-        <div style={{ position: 'absolute', top: '7%', right: '11%', width: 240, height: 240, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,162,46,0.12) 0%, rgba(201,162,46,0.03) 40%, transparent 70%)', filter: 'blur(28px)' }} />
-        <div style={{ position: 'absolute', top: '9%', right: '14%', width: 90, height: 90, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%, rgba(255,233,168,0.5), rgba(201,162,46,0.12))', boxShadow: '0 0 70px rgba(201,162,46,0.22)' }} />
-      </div>
-
-      <div className="caustics" style={{ zIndex: 1 }} />
-      <ParticleField />
-      <FogLayer />
 
       {/* Main content */}
       <div className="hero-main section-container" style={{ paddingTop: 130, paddingBottom: 70 }}>
