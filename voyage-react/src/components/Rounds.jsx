@@ -47,12 +47,12 @@ function RoundCard({ round, delay }) {
 
 export default function Rounds() {
   return (
-    <section id="rounds">
+    <section id="rounds" className="scene rules-flag">
       <div className="section-inner">
         <div className="rounds-head">
-          <span className="s-label">⚔ Battle Rounds</span>
+          <span className="s-label">🏴 Rules of Voyage</span>
           <h2 className="s-title">
-            The <span className="hl">Armada's</span> Gauntlet
+            The <span className="hl">Voyage</span> Rules
           </h2>
           <p className="s-desc">
             Three trials of fire and sea stand between a corsair and glory.

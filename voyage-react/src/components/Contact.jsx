@@ -29,12 +29,12 @@ function ContactCard({ name, role, phone, delay }) {
 
 export default function Contact() {
   return (
-    <section id="contact">
+    <section id="contact" className="scene raven-home">
       <div className="section-inner">
         <div className="contact-head">
-          <span className="s-label">📡 Hail the Fleet</span>
+          <span className="s-label">✉ Send a Raven</span>
           <h2 className="s-title">
-            Reach the <span className="pw">Quartermaster</span>
+            Send a <span className="pw">Raven</span>
           </h2>
         </div>
         <div className="contact-divider" />

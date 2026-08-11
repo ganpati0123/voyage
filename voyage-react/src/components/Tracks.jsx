@@ -26,12 +26,12 @@ function TrackCard({ icon, name, desc, num, delay }) {
 
 export default function Tracks() {
   return (
-    <section id="tracks">
+    <section id="tracks" className="scene cursed-gold">
       <div className="section-inner">
         <div className="tracks-head">
-          <span className="s-label">⚔ Trade Routes</span>
+          <span className="s-label">✦ Choose Your Domain</span>
           <h2 className="s-title">
-            Chart Your <span className="px">Course</span>
+            Choose Your <span className="px">Domain</span>
           </h2>
           <p className="s-desc">
             Three ancient trade routes sail the digital seas. Each demands mastery,

@@ -60,12 +60,12 @@ function PrizeCard({ p }) {
 
 export default function Prizes() {
   return (
-    <section id="prizes">
+    <section id="prizes" className="scene forest-diorama">
       <div className="section-inner">
         <div className="prizes-head">
-          <span className="s-label">💰 The Plunder</span>
+          <span className="s-label">🌲 Bounty &amp; Beauty</span>
           <h2 className="s-title">
-            Claim Your <span className="hl">Treasure</span>
+            Claim Your <span className="hl">Bounty</span>
           </h2>
           <p className="s-desc">
             The greatest corsairs sail not merely for glory — but for the riches
