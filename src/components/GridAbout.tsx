@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Users, Calendar, BookOpen, Network, Rocket } from 'lucide-react';
+import SketchfabEmbed from './SketchfabEmbed';
 
 const stats = [
   { icon: <Users size={24} />, value: '2,000+', label: 'Souls of the Fleet' },
@@ -131,6 +132,18 @@ const GridAbout: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* 3D Sketchfab model — Forest Diorama (foreground visual) */}
+        <div style={{
+          maxWidth: 760,
+          margin: '80px auto 0',
+          animation: visible ? 'fadeInUp 1s ease 0.6s both' : 'none',
+        }}>
+          <SketchfabEmbed
+            modelId="2c5593e43ce84fec9cb0e70e3b06fa19"
+            title="DAE Diorama — Forest Loner"
+          />
         </div>
       </div>
 

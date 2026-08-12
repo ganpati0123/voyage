@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Laptop, Lock, IdCard, BookOpen } from 'lucide-react';
+import SketchfabEmbed from './SketchfabEmbed';
 
 const guidelines = [
   { icon: <Laptop size={22} />, text: 'Each voyager must bring their own laptop, charger, and power backup for the journey ahead.' },
@@ -119,6 +120,18 @@ const Guidelines: React.FC = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* 3D Sketchfab model — Pirate Flag (foreground visual) */}
+        <div style={{
+          maxWidth: 600,
+          margin: '80px auto 0',
+          animation: visible ? 'fadeInUp 1s ease 0.6s both' : 'none',
+        }}>
+          <SketchfabEmbed
+            modelId="e6b2c8a5be864ad6afba3bdfdde1aff2"
+            title="Pirate Flag animated"
+          />
         </div>
       </div>
 

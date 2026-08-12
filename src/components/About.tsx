@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
+import SketchfabEmbed from './SketchfabEmbed';
 
 const useCountUp = (target: number, duration = 2000, start = false) => {
   const [value, setValue] = useState(0);
@@ -154,6 +155,19 @@ const About: React.FC = () => {
             <span className="gold-text">CONQUER.</span>{' '}
             <span className="gold-text">TRANSFORM.</span>
           </p>
+        </div>
+
+        {/* 3D Sketchfab model — Cursed Gold (foreground visual) */}
+        <div style={{
+          marginTop: 80,
+          maxWidth: 760,
+          margin: '80px auto 0',
+          animation: visible ? 'fadeInUp 1s ease 0.7s both' : 'none',
+        }}>
+          <SketchfabEmbed
+            modelId="b1e28eeec0fd48799155c24ab0e07a56"
+            title="Cursed Gold — Pirate Tale"
+          />
         </div>
       </div>
 

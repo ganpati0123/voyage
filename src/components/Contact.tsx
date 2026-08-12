@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import SketchfabEmbed from './SketchfabEmbed';
 
 const contacts = [
   { name: 'Ganpati Raj', phone: '+91 9507542854', role: 'The Organizing Crew' },
@@ -117,6 +118,18 @@ const Contact: React.FC = () => {
           {contacts.map((c, i) => (
             <ContactCard key={i} c={c} delay={i * 80} visible={visible} />
           ))}
+        </div>
+
+        {/* 3D Sketchfab model — Mobile Home (foreground visual) */}
+        <div style={{
+          maxWidth: 600,
+          margin: '80px auto 0',
+          animation: visible ? 'fadeInUp 1s ease 0.6s both' : 'none',
+        }}>
+          <SketchfabEmbed
+            modelId="5240b1dbc29c4ea28be7f91b3638951a"
+            title="Mobile Home"
+          />
         </div>
       </div>
 
