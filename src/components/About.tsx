@@ -57,6 +57,11 @@ const About: React.FC = () => {
         pointerEvents: 'none',
       }} />
 
+      <SketchfabEmbed
+        modelId="b1e28eeec0fd48799155c24ab0e07a56"
+        title="Cursed Gold — Pirate Tale"
+      />
+
       <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 72 }}>
           <span className="section-label">The Tale of Voyage</span>
@@ -157,18 +162,6 @@ const About: React.FC = () => {
           </p>
         </div>
 
-        {/* 3D Sketchfab model — Cursed Gold (foreground visual) */}
-        <div style={{
-          marginTop: 80,
-          maxWidth: 760,
-          margin: '80px auto 0',
-          animation: visible ? 'fadeInUp 1s ease 0.7s both' : 'none',
-        }}>
-          <SketchfabEmbed
-            modelId="b1e28eeec0fd48799155c24ab0e07a56"
-            title="Cursed Gold — Pirate Tale"
-          />
-        </div>
       </div>
 
     </section>

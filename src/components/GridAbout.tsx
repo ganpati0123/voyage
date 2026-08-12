@@ -35,6 +35,11 @@ const GridAbout: React.FC = () => {
         pointerEvents: 'none',
       }} />
 
+      <SketchfabEmbed
+        modelId="2c5593e43ce84fec9cb0e70e3b06fa19"
+        title="DAE Diorama — Forest Loner"
+      />
+
       <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ marginBottom: 68, textAlign: 'center' }}>
           <span className="section-label">The Brotherhood</span>
@@ -134,17 +139,6 @@ const GridAbout: React.FC = () => {
           </div>
         </div>
 
-        {/* 3D Sketchfab model — Forest Diorama (foreground visual) */}
-        <div style={{
-          maxWidth: 760,
-          margin: '80px auto 0',
-          animation: visible ? 'fadeInUp 1s ease 0.6s both' : 'none',
-        }}>
-          <SketchfabEmbed
-            modelId="2c5593e43ce84fec9cb0e70e3b06fa19"
-            title="DAE Diorama — Forest Loner"
-          />
-        </div>
       </div>
 
     </section>

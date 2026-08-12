@@ -89,6 +89,11 @@ const Contact: React.FC = () => {
     }}>
       <div className="grid-texture" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
+      <SketchfabEmbed
+        modelId="5240b1dbc29c4ea28be7f91b3638951a"
+        title="Mobile Home"
+      />
+
       <div className="section-container" style={{ maxWidth: '1140px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 68 }}>
           <span className="section-label">Parley with the Crew</span>
@@ -120,17 +125,6 @@ const Contact: React.FC = () => {
           ))}
         </div>
 
-        {/* 3D Sketchfab model — Mobile Home (foreground visual) */}
-        <div style={{
-          maxWidth: 600,
-          margin: '80px auto 0',
-          animation: visible ? 'fadeInUp 1s ease 0.6s both' : 'none',
-        }}>
-          <SketchfabEmbed
-            modelId="5240b1dbc29c4ea28be7f91b3638951a"
-            title="Mobile Home"
-          />
-        </div>
       </div>
 
     </section>
