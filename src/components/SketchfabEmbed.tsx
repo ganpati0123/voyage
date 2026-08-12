@@ -39,34 +39,26 @@ const SketchfabEmbed: React.FC<SketchfabEmbedProps> = ({ modelId, title }) => {
         zIndex: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
-        opacity: 0.72,
+        opacity: 1,
       }}
     >
       {shouldLoad && (
-        <>
-          <iframe
-            title={title}
-            src={embedSrc}
-            frameBorder={0}
-            allow="autoplay; fullscreen; xr-spatial-tracking"
-            allowFullScreen
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '130%',
-              height: '130%',
-              transform: 'translate(-50%, -50%)',
-              border: 'none',
-            }}
-          />
-          <div style={{
+        <iframe
+          title={title}
+          src={embedSrc}
+          frameBorder={0}
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          allowFullScreen
+          style={{
             position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(180deg, rgba(0,2,6,0.55) 0%, rgba(0,4,12,0.35) 50%, rgba(0,2,6,0.65) 100%)',
-            pointerEvents: 'none',
-          }} />
-        </>
+            top: '50%',
+            left: '50%',
+            width: '130%',
+            height: '130%',
+            transform: 'translate(-50%, -50%)',
+            border: 'none',
+          }}
+        />
       )}
 
     </div>
